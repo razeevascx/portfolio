@@ -1,4 +1,4 @@
-import  { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
 const StarsCanvas = () => {
@@ -8,12 +8,12 @@ const StarsCanvas = () => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
-    
+
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.position.z = 1;
 
     // Create stars
-    const starCount = 5000;
+    const starCount = 2000; // Reduced star count for optimization
     const starsGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(starCount * 3); // x, y, z for each star
 
@@ -49,9 +49,12 @@ const StarsCanvas = () => {
 
     window.addEventListener("resize", handleResize);
 
+    // Clean up on unmount
     return () => {
       window.removeEventListener("resize", handleResize);
-      renderer.dispose();
+      starsGeometry.dispose(); // Dispose of geometry
+      starsMaterial.dispose(); // Dispose of material
+      renderer.dispose();      // Dispose of renderer
     };
   }, []);
 

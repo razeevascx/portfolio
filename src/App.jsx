@@ -1,17 +1,37 @@
-import Education from "./components/Education";
+import About from "./components/About";
 import Home from "./components/Home";
-import StarsCanvas from "./components/Star"; 
+import Star from "./components/Star";
+import Navbar from "./components/Navbar";
+import Education from "./components/Education";
+import Project from "./components/Project";
+import Contact from "./components/Contact";
 
 function App() {
   return (
     <div className="relative">
-      {/* Background canvas for stars */}
-      <StarsCanvas />
-
-      {/* Main content above the stars */}
-      <div className="relative z-10">
-        <Home />
-      {/* <Education /> */}
+      {/* Star background or effect component */}
+      <div className="fixed inset-0 -z-10">
+        <Star />
+      </div>
+      
+      {/* Main content wrapper with a higher z-index */}
+      <div className="relative z-10"> {/* Ensure higher z-index than Star */}
+        <Navbar />
+        <section id="home">
+          <Home />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="projects">
+          <Project />
+        </section>
+        <section id="education">
+          <Education />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
       </div>
     </div>
   );
