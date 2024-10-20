@@ -13,9 +13,10 @@ function App() {
       <div className="fixed inset-0 -z-10">
         <Star />
       </div>
-      
+
       {/* Main content wrapper with a higher z-index */}
-      <div className="relative z-10"> {/* Ensure higher z-index than Star */}
+      <div className="relative z-10">
+    
         <Navbar />
         <section id="home">
           <Home />

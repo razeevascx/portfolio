@@ -1,11 +1,7 @@
-import { useState } from "react";
 import icon from "./assets/mainIconsdark.svg";
 import { motion } from "framer-motion";
-import About from "./About";
 
 function Home() {
-  const [isPopoverOpen, setPopoverOpen] = useState(false);
-
   // Define animation variants for sequential appearance
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -36,7 +32,6 @@ function Home() {
           initial="hidden"
           animate="visible"
           className="flex items-center text-4xl sm:text-5xl md:text-4xl lg:text-8xl pointer-events-auto lg:text-10xl my-4 font-extrabold bg-gradient-to-r from-green-600 to-indigo-400 bg-clip-text text-transparent animate-text mb-8 cursor-pointer"
-          onClick={() => setPopoverOpen((prev) => !prev)}
         >
           <span className="mr-2">राजीव | </span>
           <span className="text-white">🧞🧌</span>
@@ -48,13 +43,13 @@ function Home() {
           initial="hidden"
           animate="visible"
           className="text-lg md:text-2xl lg:text-4xl mb-4 text-justify"
-        >I&apos;m always eager to level up my MERN stack skills 🌱 
+        >
+          I&apos;m always eager to level up my MERN stack skills 🌱
           <span className="font-bold text-blue-500">
             Open to exciting projects
           </span>
-          that help me
-          grow. I genuinely enjoy taking on new challenges and learning along
-          the way 💻🚀
+          that help me grow. I genuinely enjoy taking on new challenges and
+          learning along the way 💻🚀
         </motion.span>
 
         <motion.div
@@ -66,20 +61,11 @@ function Home() {
         >
           <motion.button
             aria-label="View my CV"
-            className="relative pointer-events-auto border text-1xl p-3 rounded border-none hover:border-[#22c55e] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-[#22c55e] after:w-0 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full">
+            className="relative pointer-events-auto border text-1xl p-3 rounded border-none hover:border-[#22c55e] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-[#22c55e] after:w-0 after:transition-all after:duration-300 after:ease-in-out hover:after:w-full"
+          >
             Check out my CV!
           </motion.button>
         </motion.div>
-
-        {/* Popover for About Component */}
-        {isPopoverOpen && (
-          <div className="fixed inset-0 flex items-center justify-center pointer-events-auto bg-black bg-opacity-50 z-50 overflow-hidden">
-            <div className="rounded-lg shadow-lg p-4 relative">
-              <About onClose={() => setPopoverOpen(false)} />{" "}
-              {/* Pass close function as a prop */}
-            </div>
-          </div>
-        )}
       </motion.div>
 
       {/* Right Section (Icon) */}
