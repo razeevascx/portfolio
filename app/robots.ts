@@ -16,7 +16,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "Bingbot",
         allow: "/",
-        crawlDelay: 1,
+        crawlDelay: 0,
       },
     ],
     sitemap: "https://rajeevpuri.com.np/sitemap.xml",

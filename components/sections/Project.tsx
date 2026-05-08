@@ -14,7 +14,7 @@ const Projects: React.FC<ProjectsProps> = ({ list = 3 }) => {
     <Container
       animate={{ opacity: 1, y: 0 }}
       id="projects"
-      className="w-full p-5 mx-auto"
+      className="w-full p-5 mx-auto overflow-hidden"
     >
       <Items
         Number="02"

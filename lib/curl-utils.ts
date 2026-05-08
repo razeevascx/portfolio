@@ -34,7 +34,16 @@ export const colors = {
   BOLD: "\x1b[1m",
   DIM: "\x1b[2m",
 };
+
 const url = process.env.BASE_URL || "rajeevpuri.com.np";
+
+// Cache for ANSI code regex to avoid recompiling
+const ansiCodeRegex = /\x1b\[[0-9;]*m/g;
+
+// Helper to calculate visible length (strips ANSI codes)
+function getVisibleLength(text: string): number {
+  return text.replace(ansiCodeRegex, "").length;
+}
 
 export function Header(title: string, number: string, desc: string): string {
   const boxWidth = 100;
@@ -54,7 +63,7 @@ export function Header(title: string, number: string, desc: string): string {
 
   // Center any line within the box
   const centerLine = (line: string): string => {
-    const visibleLength = line.replace(/\x1b\[[0-9;]*m/g, "").length;
+    const visibleLength = getVisibleLength(line);
     const padding = Math.max(0, Math.floor((boxWidth - visibleLength) / 2));
     const rightPadding = Math.max(0, boxWidth - visibleLength - padding);
     return `${colors.BRIGHT_BLUE}║${colors.RESET}${" ".repeat(
@@ -144,7 +153,7 @@ export function Box(content: string, width: number = 70): string {
   const lines = content.split("\n");
 
   const boxedLines = lines.map((line) => {
-    const visibleLength = line.replace(/\x1b\[[0-9;]*m/g, "").length;
+    const visibleLength = getVisibleLength(line);
     const padding = Math.max(0, width - 4 - visibleLength);
     return `${colors.LIGHT_CYAN}║${colors.RESET} ${line}${" ".repeat(
       padding,
@@ -161,11 +170,8 @@ export function wrapText(text: string, width: number, indent = ""): string {
   let currentLine = "";
 
   words.forEach((word) => {
-    const visibleLength = word.replace(/\x1b\[[0-9;]*m/g, "").length;
-    const currentVisibleLength = currentLine.replace(
-      /\x1b\[[0-9;]*m/g,
-      "",
-    ).length;
+    const visibleLength = getVisibleLength(word);
+    const currentVisibleLength = getVisibleLength(currentLine);
 
     const spacer = currentLine ? 1 : 0;
     if (currentVisibleLength + spacer + visibleLength > effectiveWidth) {

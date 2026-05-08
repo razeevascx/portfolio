@@ -1,6 +1,7 @@
 import About from "@/components/sections/About";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { Metadata } from "next";
 import {
   Coffee,
   Code,
@@ -12,6 +13,11 @@ import {
   Palette,
   Terminal,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About | Rajeev Puri",
+  description: "Learn more about Rajeev Puri, a software engineer with expertise in Next.js, React, and modern web technologies.",
+};
 
 export default function page() {
   return (

@@ -1,10 +1,17 @@
+
 import * as motion from "motion/react-client";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Container from "@/components/Container";
 import Socialicons from "@/components/ui/Socialicons";
 import CopyCommand from "@/components/ui/CopyCommand";
 import Marquee from "../ui/Marquee";
-import { TopographicCanvas } from "../background/Topographic";
+import { Suspense } from "react";
+
+const TopographicCanvas = dynamic(
+  () =>
+    import("@/components/background/Topographic").then((mod) => mod.TopographicCanvas)
+);
 
 export default function Hero() {
   const param = {
@@ -19,10 +26,13 @@ export default function Hero() {
   return (
     <>
       <Container id="home" className="w-full p-4 md:p-5 mx-auto">
+        <Suspense >
         <div className="hidden lg:block absolute inset-0 z-0">
           <TopographicCanvas {...param} />
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#030303] via-[#030303]/80 to-transparent w-full" />
+          <div className="absolute inset-0 pointer-events-none bg-linear-to-r from-[#030303] via-[#030303]/80 to-transparent w-full" />
+
         </div>
+        </Suspense>
 
         <motion.div
           initial={{ opacity: 0 }}

@@ -4,7 +4,6 @@ import { Metadata, Viewport } from "next";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-//@ts-ignore
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { NoiseOverlay } from "@/components/background/Nebula";
@@ -48,6 +47,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Rajeev Puri", url: "https://rajeevpuri.com.np" }],
   creator: "Rajeev Puri",
   category: "Software Development",
+  icons: {
+    icon: "/icon",
+    apple: "/icon",
+  },
+  manifest: "/manifest.webmanifest",
   robots: {
     index: true,
     follow: true,
@@ -68,7 +72,7 @@ export const metadata: Metadata = {
       "Full-stack software engineer building innovative web experiences with modern technologies.",
     images: [
       {
-        url: "https://rajeevpuri.com.np/opengraph-image.jpg",
+        url: "/opengraph-image.jpg",
         width: 1200,
         height: 630,
         alt: "Rajeev Puri - Software Engineer",
@@ -82,13 +86,13 @@ export const metadata: Metadata = {
     description:
       "Full-stack software engineer specializing in Next.js, React, and TypeScript.",
     images: {
-      url: "https://rajeevpuri.com.np/twitter-image.jpg",
+      url: "/twitter-image.jpg",
       alt: "Rajeev Puri",
     },
     creator: "@razeev_asnx",
   },
   alternates: {
-    canonical: "https://rajeevpuri.com.np",
+    canonical: "/",
   },
   formatDetection: {
     email: false,
@@ -147,16 +151,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <head>
-        {/* Icons and manifest */}
-        <link
-          rel="icon"
-          href="/icon?<generated>"
-          type="image/png"
-          sizes="32x32"
-        />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icon?<generated>" />
-
         {/* Structured Data (JSON-LD) */}
         <Script
           id="schema-org"
@@ -164,11 +158,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           strategy="afterInteractive"
         />
-
-        <link rel="canonical" href="https://rajeevpuri.com.np" />
       </head>
       <body
-        className={`${ibmPlexSans.variable} ${geistMono.variable} antialiased font-sans dark`}
+        className={`${ibmPlexSans.variable} ${geistMono.variable} antialiased font-sans dark selection:bg-primary/40 `}
       >
         <Navbar />
         <NoiseOverlay />

@@ -46,7 +46,7 @@
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "description": "Professional portfolio of Rajeev Puri, a Software Engineer specializing in Next.js, React, and TypeScript.",
   "main": "eslint.config.js",
   "repository": {
     "type": "git",

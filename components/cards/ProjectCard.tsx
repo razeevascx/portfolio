@@ -1,5 +1,6 @@
 import * as motion from "motion/react-client";
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 
 interface TechItem {
   id: string;
@@ -46,11 +47,13 @@ const Project = ({
         </p>
 
         {image && (
-          <div className=" shadow-lg">
-            <img
+          <div className=" shadow-lg relative overflow-hidden">
+            <Image
               src={`/pictures/${image}`}
-              alt={title}
-              className="w-full hover:scale-100 transition-transform duration-500"
+              alt={`Screenshot of ${title} project`}
+              width={800}
+              height={450}
+              className="w-full h-auto hover:scale-105 transition-transform duration-500"
             />
           </div>
         )}

@@ -1,5 +1,6 @@
 import * as motion from "motion/react-client";
 import { type Project } from "@/lib/constants";
+import Image from "next/image";
 
 interface ProjectCardProps extends Project {
   image?: string;
@@ -71,12 +72,14 @@ const Project = ({
           <motion.div
             whileHover={{ scale: 1.02 }}
             className="bg-gray-900/50 overflow-hidden rounded-xl shadow-xl hover:shadow-2xl
-                     transition-all duration-300 border border-gray-800/50 hover:border-gray-700/50"
+                     transition-all duration-300 border border-gray-800/50 hover:border-gray-700/50 relative"
           >
-            <img
+            <Image
               src={`/pictures/${image}`}
-              alt={title}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              alt={`Preview of ${title} project`}
+              width={800}
+              height={450}
+              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
             />
           </motion.div>
         )}

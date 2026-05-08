@@ -5,14 +5,14 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Rajeev Puri - Software Engineer Portfolio",
     short_name: "Rajeev Puri",
     description:
-      "Software Engineer specializing in full-stack web development, UI/UX design, and system architecture",
+      "Software Engineer specializing in full-stack web development, UI/UX design, and system architecture. Building innovative web experiences with Next.js, React, and TypeScript.",
     start_url: "/",
     scope: "/",
     display: "standalone",
     orientation: "portrait-primary",
     theme_color: "#000000",
-    background_color: "#0f0f11",
-    categories: ["business", "productivity"],
+    background_color: "#020203",
+    categories: ["business", "productivity", "developer tools"],
     dir: "ltr",
     lang: "en",
     prefer_related_applications: false,
@@ -27,21 +27,9 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     icons: [
       {
-        src: "/favicon.ico",
+        src: "/icon",
         sizes: "32x32",
-        type: "image/x-icon",
-      },
-      {
-        src: "/icon.png",
-        sizes: "192x192",
         type: "image/png",
-        purpose: "any",
-      },
-      {
-        src: "/icon.png",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable",
       },
     ],
     protocol_handlers: [
@@ -62,8 +50,8 @@ export default function manifest(): MetadataRoute.Manifest {
         url: "/projects",
         icons: [
           {
-            src: "/icon.png",
-            sizes: "192x192",
+            src: "/icon",
+            sizes: "32x32",
             type: "image/png",
           },
         ],
@@ -75,8 +63,8 @@ export default function manifest(): MetadataRoute.Manifest {
         url: "/services",
         icons: [
           {
-            src: "/icon.png",
-            sizes: "192x192",
+            src: "/icon",
+            sizes: "32x32",
             type: "image/png",
           },
         ],
@@ -88,8 +76,8 @@ export default function manifest(): MetadataRoute.Manifest {
         url: "/contact",
         icons: [
           {
-            src: "/icon.png",
-            sizes: "192x192",
+            src: "/icon",
+            sizes: "32x32",
             type: "image/png",
           },
         ],

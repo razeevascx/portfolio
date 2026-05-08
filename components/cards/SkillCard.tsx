@@ -23,9 +23,9 @@ const SkillCard = ({ skill, className }: SkillCardProps) => {
       <div className="transition-transform duration-500 group-hover:scale-110 ">
         {skill.icon}
       </div>
-      <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+      <p className="text-xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
         {skill.label}
-      </h3>
+      </p>
     </motion.div>
   );
 };
