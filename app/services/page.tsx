@@ -1,12 +1,18 @@
 import ProcessCard from "@/components/sections/service/ProcessCard";
 import Container from "@/components/Container";
 import SkillCard1 from "@/components/cards/SkillCard";
+import { Metadata } from "next";
 
 import { processSteps } from "@/lib/constants";
 import { ArrowRight, Zap, Shield, Sparkles } from "lucide-react";
 import Service from "@/components/sections/Service";
 import { libraries } from "@/lib/skills-data";
 import SectionBlock from "@/components/SectionBlock";
+
+export const metadata: Metadata = {
+  title: "Services | Rajeev Puri",
+  description: "Explore the services offered by Rajeev Puri, including full-stack development, UI/UX design, and specialized web solutions.",
+};
 
 export default function page() {
   return (

@@ -47,7 +47,7 @@ function Socialicons({
           className={`flex items-center gap-1.5 ${sizeClasses[size]} text-gray-400 hover:text-white transition-colors duration-300 `}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          aria-label={link.name}
+          aria-label={showUsername && link.username ? `${link.name}: ${link.username}` : link.name}
         >
           {link.icon}
           {showLabel && link.name && (

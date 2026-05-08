@@ -2,6 +2,7 @@ import { Calendar, MapPin } from "lucide-react";
 import Socialicons from "./Socialicons";
 import LanguageCard from "../cards/LanguageCard";
 import { language } from "@/lib/skills-data";
+import Image from "next/image";
 
 export default function ProfileCard() {
   const textureUrl =
@@ -19,9 +20,11 @@ export default function ProfileCard() {
       <div className="px-10 pb-10 relative z-10">
         <div className="flex items-end justify-between -mt-12 mb-6">
           <div className="relative">
-            <img
+            <Image
               src="https://avatars.githubusercontent.com/u/154011772?v=4"
               alt="Rajeev Puri's Avatar"
+              width={96}
+              height={96}
               className="w-24 h-24 rounded-lg border-[6px] border-[#0a0a0a] object-cover bg-black shadow-2xl"
             />
           </div>

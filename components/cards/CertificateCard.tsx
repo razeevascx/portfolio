@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import type { CredlyBadgeItem } from "@/lib/credly";
+import Image from "next/image";
 
 export default function CertificateBadge({
   item,
@@ -26,9 +27,11 @@ export default function CertificateBadge({
       <div className="flex items-center gap-6 ">
         <div className="p-3  scale-110 transition-transform duration-500 shrink-0">
           {badge.image_url ? (
-            <img
+            <Image
               src={badge.image_url}
               alt={badge.name}
+              width={160}
+              height={160}
               className="size-40 object-contain"
             />
           ) : (

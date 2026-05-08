@@ -1,16 +1,10 @@
 import Contact from "@/components/sections/Contact";
-import Container from "@/components/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
-import {
-  Clock,
-  Globe,
-  Shield,
-  Sparkles,
-  Target,
-  Zap,
-  ArrowRight,
-  Terminal,
-} from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact | Rajeev Puri",
+  description: "Get in touch with Rajeev Puri for collaboration, project inquiries, or professional networking.",
+};
 
 export default function page() {
   return (

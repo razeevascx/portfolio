@@ -1,10 +1,14 @@
+"use client";
+
 import * as motion from "motion/react-client";
+import { useMemo } from "react";
 import { language } from "@/lib/skills-data";
 import LanguageCard from "@/components/cards/LanguageCard";
 import { cn } from "@/lib/utils";
 
 function Marquee({ className }: { className?: string } = {}) {
-  const tripleLang = [...language, ...language];
+  // Memoize the tripled language array to prevent recreation on each render
+  const tripleLang = useMemo(() => [...language, ...language], []);
 
   return (
     <div
