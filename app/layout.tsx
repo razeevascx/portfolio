@@ -1,5 +1,6 @@
 import { IBM_Plex_Sans, Geist_Mono, Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata, Viewport } from "next";
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
@@ -169,6 +170,7 @@ export default function RootLayout({
         <Footer />
         <Toaster />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
