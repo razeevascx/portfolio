@@ -33,76 +33,93 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rajeevpuri.com.np"),
-  title: "Rajeev Puri - Portfolio ",
+  title: {
+    default: "Rajeev Puri | Software Engineer",
+    template: "%s | Rajeev Puri",
+  },
   description:
-    "Software Engineer specializing in full-stack web development, UI/UX design, and system architecture. Building innovative web experiences with Next.js, React, and TypeScript.",
+    " Software Engineer based in Nepal, specializing in Next.js, React, and PostgreSQL. Building high-performance web applications and scalable system architectures.",
   keywords: [
-    "Software Engineer",
-    "Web Developer",
-    "Next.js",
-    "React",
+    // Core Roles
+    "Software Engineer UK",
+    "Full Stack Developer London",
+    "Product Engineer",
+    "React Contractor UK",
+
+    // Tech Stack (High Demand)
+    "Next.js Expert",
     "TypeScript",
-    "UI/UX Design",
-    "Full-Stack Development",
+    "Node.js",
+    "NestJS",
+    "PostgreSQL",
+    "AWS Lambda",
+    "Docker",
+    "Terraform",
+    "Tailwind CSS",
+
+    // Methodologies & Concepts
+    "TDD",
+    "Test Driven Development",
+    "CI/CD",
+    "Agile Delivery",
+    "Microservices",
+    "System Architecture",
+    "Web Performance Optimisation", // UK Spelling
+
+    // Niche / Emerging
+    "AI Integration",
+    "Serverless Architecture",
+    "Fintech Development",
   ],
   authors: [{ name: "Rajeev Puri", url: "https://rajeevpuri.com.np" }],
   creator: "Rajeev Puri",
-  category: "Software Development",
+  category: "technology",
   icons: {
-    icon: "/icon",
-    apple: "/icon",
+    icon: "/favicon.ico",
   },
   manifest: "/manifest.webmanifest",
   robots: {
     index: true,
     follow: true,
+    nocache: true,
     googleBot: {
       index: true,
       follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
       "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://rajeevpuri.com.np",
-    title: "Rajeev Puri - Software Engineer",
+    title: "Rajeev Puri | Software Engineer",
     description:
-      "Full-stack software engineer building innovative web experiences with modern technologies.",
+      "Crafting innovative web experiences with Next.js and TypeScript. View my latest projects and technical expertise.",
     images: [
       {
         url: "/opengraph-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Rajeev Puri - Software Engineer",
+        alt: "Rajeev Puri Portfolio - Software Engineer",
       },
     ],
     siteName: "Rajeev Puri Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rajeev Puri - Software Engineer",
+    title: "Rajeev Puri | Software Engineer",
     description:
-      "Full-stack software engineer specializing in Next.js, React, and TypeScript.",
-    images: {
-      url: "/twitter-image.jpg",
-      alt: "Rajeev Puri",
-    },
+      "Software Engineer specializing in Next.js, React, and modern web tech.",
+    images: ["/twitter-image.jpg"],
     creator: "@razeev_asnx",
   },
   alternates: {
-    canonical: "/",
-  },
-  formatDetection: {
-    email: false,
-    telephone: false,
-  },
-  verification: {
-    google: "your-google-verification-code",
+    canonical: "https://rajeevpuri.com.np",
   },
 };
+
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -113,8 +130,13 @@ const jsonLd = {
       name: "Rajeev Puri",
       url: "https://rajeevpuri.com.np",
       jobTitle: "Software Engineer",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "London",
+        addressCountry: "UK",
+      },
       description:
-        "Software Engineer with expertise in Next.js, React, TypeScript, and modern web technologies",
+        "Full-stack Software Engineer based in the UK, specializing in Next.js, React, TypeScript, and scalable Cloud Architecture.",
       email: "contact@rajeevpuri.com.np",
       sameAs: [
         "https://github.com/razeevascx",
@@ -126,10 +148,11 @@ const jsonLd = {
         "React",
         "Next.js",
         "TypeScript",
-        "Web Development",
-        "UI/UX Design",
-        "Database Design",
-        "Cloud Architecture",
+        "Full-Stack Web Development",
+        "AWS Cloud",
+        "PostgreSQL",
+        "Agile Development",
+        "System Architecture",
       ],
     },
     {
@@ -138,11 +161,12 @@ const jsonLd = {
       url: "https://rajeevpuri.com.np",
       name: "Rajeev Puri Portfolio",
       description:
-        "Portfolio and services of Rajeev Puri, a software engineer specializing in modern web technologies",
+        "Professional portfolio of Rajeev Puri, a UK-based software engineer.",
       publisher: { "@id": "https://rajeevpuri.com.np/#person" },
     },
   ],
 };
+
 
 export default function RootLayout({
   children,
