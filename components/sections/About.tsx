@@ -22,7 +22,7 @@ const About = async () => {
       <Items
         Number="03"
         title="About Me"
-        des="Full-stack developer crafting digital solutions with clean, scalable code."
+        des="Full-stack developer specializing in high-performance web applications built with clean, scalable code to drive user growth and digital transformation."
       />
 
       <ProfileCard />

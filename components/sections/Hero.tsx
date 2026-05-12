@@ -26,12 +26,11 @@ export default function Hero() {
   return (
     <>
       <Container id="home" className="w-full p-4 md:p-5 mx-auto">
-        <Suspense >
-        <div className="hidden lg:block absolute inset-0 z-0">
-          <TopographicCanvas {...param} />
-          <div className="absolute inset-0 pointer-events-none bg-linear-to-r from-[#030303] via-[#030303]/80 to-transparent w-full" />
-
-        </div>
+        <Suspense>
+          <div className="hidden lg:block absolute inset-0 z-0">
+            <TopographicCanvas {...param} />
+            <div className="absolute inset-0 pointer-events-none bg-linear-to-r from-[#030303] via-[#030303]/80 to-transparent w-full" />
+          </div>
         </Suspense>
 
         <motion.div
@@ -47,9 +46,9 @@ export default function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 className="flex items-center gap-3 mb-6 md:mb-8"
               >
-                <div className="h-px w-8 md:w-12 bg-blue-600"></div>
+                <div className="h-px w-8 md:w-12 bg-blue-600"/>
                 <p className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.4em] text-blue-500 font-bold">
-                  A path back to wonder
+                  A Path Back to Wonder: Creative Design.
                 </p>
               </motion.div>
 
@@ -72,11 +71,10 @@ export default function Hero() {
               >
                 <p className="text-sm md:text-lg lg:text-xl text-zinc-400 font-light max-w-3xl leading-relaxed hover:text-white transition-colors duration-300">
                   Hey there. I'm{" "}
-                  <span className="text-white font-bold">Rajeev Puri</span>.
-                  Currently a BSc Student and a software engineer. I'll guide
-                  your creativity with calm, immersive products that blend
-                  reflection, sound, and visual prompts so ideas feel natural
-                  again.
+                  <span className="text-white font-bold">Rajeev Puri</span>.  I help creatives
+                  and brands launch digital products that blend sound,
+                  reflection, and visual storytelling to make technology feel
+                  natural again.
                 </p>
               </motion.div>
 
@@ -90,7 +88,7 @@ export default function Hero() {
                 imagination
               </motion.p>
 
-              <Socialicons showUsername className="mb-6 md:mb-8" />
+              <Socialicons showLabel className="mb-6 md:mb-8" />
 
               <motion.div
                 initial={{ opacity: 0 }}

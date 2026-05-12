@@ -7,7 +7,6 @@ import LanguageCard from "@/components/cards/LanguageCard";
 import { cn } from "@/lib/utils";
 
 function Marquee({ className }: { className?: string } = {}) {
-  // Memoize the tripled language array to prevent recreation on each render
   const tripleLang = useMemo(() => [...language, ...language], []);
 
   return (
@@ -30,7 +29,11 @@ function Marquee({ className }: { className?: string } = {}) {
         }}
       >
         {tripleLang.map((item, idx) => (
-          <LanguageCard key={`${item.label}-${idx}`} skill={item} />
+          <LanguageCard
+            className="w-56"
+            key={`${item.label}-${idx}`}
+            skill={item}
+          />
         ))}
       </motion.div>
     </div>

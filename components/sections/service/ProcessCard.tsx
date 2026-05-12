@@ -5,7 +5,7 @@ type ProcessCardProps = {
   step: string | number;
   title: string;
   detail: string;
-  icon: ComponentType<{ size?: number; className?: string }>;
+  icon?: ComponentType<{ size?: number; className?: string }>;
   status: string;
 };
 
@@ -25,14 +25,14 @@ export default function ProcessCard({
     >
       <div className="relative h-full border border-white/10 p-8 hover:border-blue-500/50 bg-zinc-900/5 hover:bg-zinc-900/20 transition-all duration-500 flex flex-col gap-6 overflow-hidden">
         {/* Background Step Number */}
-        <span className="absolute -top-4 -right-4 text-9xl font-black text-white/[0.02] group-hover:text-blue-500/[0.03] transition-colors pointer-events-none select-none">
+        <span className="absolute -top-4 -right-4 text-9xl font-black text-white/2 group-hover:text-blue-500/3 transition-colors pointer-events-none select-none">
           {step}
         </span>
 
         <div className="flex justify-between items-center relative z-10">
           <div className="flex items-center gap-4">
             <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-500 group-hover:scale-110 transition-transform duration-500">
-              <Icon size={24} />
+              {Icon ? <Icon size={24} /> : null}
             </div>
             <div className="flex flex-col">
               <p className="text-[10px] font-mono font-bold text-zinc-500 tracking-[0.2em] uppercase">
@@ -61,8 +61,8 @@ export default function ProcessCard({
               <div
                 key={i}
                 className={`h-1.5 w-6 rounded-full transition-all duration-500 ${
-                  i <= Number(step) 
-                    ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]" 
+                  i <= Number(step)
+                    ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"
                     : "bg-zinc-800"
                 }`}
               ></div>

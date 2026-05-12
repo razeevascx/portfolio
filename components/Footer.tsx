@@ -7,6 +7,17 @@ import Socialicons from "./ui/Socialicons";
 import Container from "@/components/Container";
 
 function Footer() {
+ const llms = [
+   {
+     id: "llms-file",
+     title: "llms.txt",
+     url: "/llms.txt",
+     icon: "llms.txt",
+     hoverColor: "hover:text-blue-400",
+     bgColor: "bg-blue-400/10",
+     description: "Explore the llms.txt file...",
+   },
+ ];
   return (
     <footer className="mt-10 border-t border-gray-800">
       <Container>
@@ -19,8 +30,9 @@ function Footer() {
           >
             <h3 className="text-white text-xl font-semibold">Rajeev Puri</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Building digital experiences with code and creativity.
-              Transforming ideas into elegant solutions.
+              Building immersive digital experiences optimized for speed and
+              accessibility. Specializing in conversion-focused design and
+              robust software engineering.
             </p>
           </motion.div>
 
@@ -32,7 +44,7 @@ function Footer() {
           >
             <h3 className="text-white text-xl font-semibold">Quick Links</h3>
             <nav className="grid grid-cols-2 ">
-              {quicklink.map((link) => (
+              {[...quicklink, ...llms].map((link) => (
                 <motion.a
                   key={link.id}
                   href={link.url}
@@ -53,7 +65,8 @@ function Footer() {
           >
             <h3 className="text-white text-xl font-semibold">Get in Touch</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Have a project in mind? Let&apos;s talk about it.
+              Have a project in mind? Let’s start the conversation.  I’m ready to help you
+              create something remarkable.
             </p>
             <a
               href="mailto:contact@rajeevpuri.com.np"

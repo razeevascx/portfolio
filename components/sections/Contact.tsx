@@ -26,7 +26,7 @@ function Contact() {
         <Items
           Number="04"
           title="Contact Me"
-          des="Let's collaborate and bring your ideas to life. Feel free to reach out through any of these channels."
+          des="Let’s bring your vision to life. Whether you're looking for UI/UX design or scalable web engineering, I’m here to help. Reach out through any of these channels to start our conversation."
         />
         <div className="relative">
           <div className="border-dashed border-2  p-6 font-mono text-sm  border-slate-700/50   hover:border-blue-400/50 transition-all duration-300 group">

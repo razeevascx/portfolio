@@ -20,17 +20,29 @@ import {
   Mail,
   LinkedinIcon,
   X,
-  Code2,
+  Code,
   Palette,
   Layout,
   Database,
   Cpu,
+  PaletteIcon,
+  Layers,
+  Infinity,
   ShieldCheck,
   Search,
   Pencil,
   LayoutDashboard,
   Rocket,
 } from "lucide-react";
+import {
+  ArchitectureIllustration,
+  BrandingIllustration,
+  DatabaseIllustration,
+  DevOpsIllustration,
+  FullStackIllustration,
+  UIUXIllustration,
+} from "@/components/illustration/ServiceIllustrations";
+
 
 interface QuickLink {
   id: string;
@@ -78,7 +90,11 @@ export interface Project {
 }
 
 export interface Service {
+  id: string;
   icon: React.ReactNode;
+illustration?: React.ComponentType | React.ReactNode;
+  category: string;
+  type: "core" | "capable";
   title: string;
   description: string;
   technologies: string[];
@@ -106,6 +122,7 @@ export const quicklink: QuickLink[] = [
     url: "/contact",
   },
 ];
+
 
 export const socialLinks: SocialLink[] = [
   {
@@ -355,158 +372,156 @@ export const projectList = [
   },
 ];
 
-import {
-  FullStackIllustration,
-  BrandingIllustration,
-  UIUXIllustration,
-  DatabaseIllustration,
-  ArchitectureIllustration,
-  DevOpsIllustration,
-} from "@/components/illustration/ServiceIllustrations";
+
 
 export const services = [
-  {
-    id: "01",
-    icon: <FullStackIllustration />,
-    title: "Full-Stack Development",
-    description:
-      "End-to-end applications built with scalability and performance in mind. I deliver robust backends paired with high-fidelity, interactive frontends that provide a seamless user experience across all devices.",
-    technologies: [
-      "TypeScript",
-      "Next.js",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "PostgreSQL",
-      "REST APIs",
-      "GraphQL",
-    ],
-    category: "Engineering",
-    type: "core",
-  },
-  {
-    id: "02",
-    icon: <BrandingIllustration />,
-    title: "Brand & Visual Identity",
-    description:
-      "Strategic visual systems that tell your unique story. From logo design to comprehensive brand guidelines, I create cohesive identities that build trust and ensure long-term recognition in your market.",
-    technologies: [
-      "Adobe Illustrator",
-      "Adobe Photoshop",
-      "Adobe InDesign",
-      "Figma",
-      "Typography Systems",
-      "Design Systems",
-    ],
-    category: "Branding",
-    type: "capable",
-  },
-  {
-    id: "03",
-    icon: <UIUXIllustration />,
-    title: "UI/UX Design",
-    description:
-      "User-centered interfaces that people actually enjoy using. I transform complex requirements into intuitive, high-fidelity prototypes, focusing on accessibility, usability, and modern aesthetic standards.",
-    technologies: [
-      "Figma",
-      "Framer",
-      "Adobe XD",
-      "Wireframing",
-      "Prototyping",
-      "User Testing",
-      "Design Systems",
-    ],
-    category: "Design",
-    type: "core",
-  },
-  {
-    id: "04",
-    icon: <DatabaseIllustration />,
-    title: "Database Design & Optimization",
-    description:
-      "Fast, reliable data management at any scale. I design optimized schemas and write efficient queries for both SQL and NoSQL environments, ensuring your application remains snappy under heavy load.",
-    technologies: [
-      "PostgreSQL",
-      "MongoDB",
-      "Redis",
-      "Prisma",
-      "Indexing",
-      "Query Optimization",
-      "Data Modeling",
-    ],
-    category: "Data",
-    type: "core",
-  },
-  {
-    id: "05",
-    icon: <ArchitectureIllustration />,
-    title: "System Design & Architecture",
-    description:
-      "Future-proof systems designed for the long haul. I apply clean architecture principles and proven design patterns to build infrastructure that grows with your user base and business needs.",
-    technologies: [
-      "Microservices",
-      "Event-Driven Architecture",
-      "REST APIs",
-      "GraphQL",
-      "System Design Patterns",
-      "Load Balancing",
-      "Caching Strategies",
-    ],
-    category: "Architecture",
-    type: "core",
-  },
-  {
-    id: "06",
-    icon: <DevOpsIllustration />,
-    title: "DevOps & Cloud Security",
-    description:
-      "Ship fast, stay secure. I implement automated CI/CD pipelines and containerized environments with security baked in from the start, allowing you to focus on features while I handle the infrastructure.",
-    technologies: [
-      "Docker",
-      "Kubernetes",
-      "GitHub Actions",
-      "Terraform",
-      "AWS",
-      "CI/CD Pipelines",
-      "Cloud Security",
-      "Monitoring (Prometheus/Grafana)",
-    ],
-    category: "DevOps",
-    type: "capable",
-  },
+
+    {
+      id: "01",
+      icon: <Code />,
+      illustration: <FullStackIllustration />,
+      title: "Scalable Next.js & Full-Stack Development",
+      description:
+        "Expert end-to-end web applications optimized for Core Web Vitals, speed, and long-term scalability. I build secure backends and high-fidelity frontends designed to maximize user retention and conversion.",
+      technologies: [
+        "TypeScript",
+        "Next.js (App Router)",
+        "Node.js",
+        "PostgreSQL",
+        "Performance Optimization",
+        "Tailwind CSS",
+      ],
+      category: "Software Engineering",
+      type: "core",
+    },
+    {
+      id: "02",
+      icon: <PaletteIcon />,
+      illustration: <BrandingIllustration />,
+      title: "Brand Strategy & Digital Identity Systems",
+      description:
+        "Creating strategic visual identities that build market authority and trust. From professional logo design to comprehensive brand guidelines, I ensure your business is recognized and memorable.",
+      technologies: [
+        "Brand Architecture",
+        "Figma",
+        "Design Systems",
+        "Typography",
+        "Visual Storytelling",
+      ],
+      category: "Digital Branding",
+      type: "capable",
+    },
+    {
+      id: "03",
+      icon: <Palette />,
+      illustration: <UIUXIllustration />,
+      title: "Conversion-Focused UI/UX & Product Design",
+      description:
+        "User-centric interfaces engineered for accessibility (WCAG) and high usability. I transform complex business requirements into intuitive prototypes that simplify the user journey.",
+      technologies: [
+        "Figma",
+        "Mobile-First Design",
+        "Wireframing",
+        "User Testing",
+        "Framer Motion",
+        "Accessibility",
+      ],
+      category: "UX/UI Design",
+      type: "core",
+    },
+    {
+      id: "04",
+      icon: <Database />,
+      illustration: <DatabaseIllustration />,
+      title: "Database Architecture & Query Optimization",
+      description:
+        "Reliable data management for high-traffic applications. I design optimized schemas and efficient queries for SQL and NoSQL to keep your platform fast under heavy user loads.",
+      technologies: [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "Prisma ORM",
+        "Indexing Strategies",
+        "Data Modeling",
+      ],
+      category: "Backend & Data",
+      type: "core",
+    },
+    {
+      id: "05",
+      icon: <Layers />,
+      illustration: <ArchitectureIllustration />,
+      title: "Enterprise System Design & Architecture",
+      description:
+        "Future-proof digital infrastructure built for business growth. I apply clean architecture and scalable design patterns to ensure your software evolves with your user base.",
+      technologies: [
+        "Microservices",
+        "Serverless Architecture",
+        "REST & GraphQL",
+        "System Patterns",
+        "Load Balancing",
+      ],
+      category: "Systems Architecture",
+      type: "core",
+    },
+    {
+      id: "06",
+      icon: <Infinity />,
+      illustration: <DevOpsIllustration />,
+      title: "Cloud DevOps & Infrastructure Security",
+      description:
+        "Automated CI/CD pipelines and secure cloud environments. I implement robust containerization and monitoring so you can ship features faster without infrastructure bottlenecks.",
+      technologies: [
+        "AWS/Vercel",
+        "Docker",
+        "Kubernetes",
+        "GitHub Actions",
+        "Terraform",
+        "Cloud Monitoring",
+      ],
+      category: "DevOps & Cloud",
+      type: "capable",
+    },
+
 ];
 
 export const processSteps = [
-  {
-    step: "01",
-    title: "Discovery & Strategy",
-    detail:
-      "We dive deep into your business goals, user needs, and market landscape to define a clear, actionable roadmap for success.",
-    icon: Search,
-    status: "Planning",
-  },
-  {
-    step: "02",
-    title: "Design & Prototyping",
-    detail:
-      "We craft intuitive interfaces and distinct visual systems, iterating rapidly on high-fidelity prototypes to validate concepts.",
-    icon: Pencil,
-    status: "Designing",
-  },
-  {
-    step: "03",
-    title: "Engineering",
-    detail:
-      "Our engineers build robust, scalable architectures using modern tech stacks, ensuring pixel-perfect implementation.",
-    icon: LayoutDashboard,
-    status: "Building",
-  },
-  {
-    step: "04",
-    title: "Launch & Scale",
-    detail:
-      "We deploy with confidence, monitor real-world usage, and provide ongoing support to evolve the product.",
-    icon: Rocket,
-    status: "Releasing",
-  },
+
+    {
+      step: "01",
+      // SEO Tip: Focus on "Product Roadmap" and "Digital Strategy"
+      title: "Product Discovery & Digital Strategy",
+      detail:
+        "I analyze your business goals and user personas to define a technical roadmap. We focus on market research and competitive analysis to ensure a high-ROI product launch.",
+      icon: Search,
+      status: "Strategy Phase",
+    },
+    {
+      step: "02",
+      // SEO Tip: Use "UX/UI" and "Prototyping" for design-intent searches
+      title: "UX/UI Design & Interactive Prototyping",
+      detail:
+        "I craft conversion-focused user interfaces and scalable design systems. Using high-fidelity prototypes, we validate user experience (UX) before a single line of code is written.",
+      icon: Pencil,
+      status: "Design Phase",
+    },
+    {
+      step: "03",
+      // SEO Tip: Mention "Full-Stack" and "Scalable"
+      title: "Full-Stack Engineering & Clean Code",
+      detail:
+        "Building robust, scalable architectures using modern tech stacks like Next.js and Node.js. I ensure pixel-perfect frontend implementation and high-performance backend systems.",
+      icon: LayoutDashboard,
+      status: "Development Phase",
+    },
+    {
+      step: "04",
+      // SEO Tip: Focus on "Deployment" and "Optimization"
+      title: "Strategic Launch & Performance Scaling",
+      detail:
+        "I handle secure cloud deployment and real-world performance monitoring. Post-launch, I provide ongoing support to optimize speed, SEO, and user engagement metrics.",
+      icon: Rocket,
+      status: "Launch Phase",
+    },
+
 ];

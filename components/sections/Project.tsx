@@ -19,18 +19,15 @@ const Projects: React.FC<ProjectsProps> = ({ list = 3 }) => {
       <Items
         Number="02"
         title="Projects"
-        des="Explore my featured projects showcasing my expertise in web development and problem-solving capabilities."
+        des="Explore a curated gallery of  projects designed to solve complex business challenges. Each case study demonstrates my expertise in building scalable web applications, optimizing for Core Web Vitals, and delivering high-performance digital solutions that drive user engagement."
       />
-      <Suspense fallback={<DotmSquare11 />}>
+      <Suspense fallback={<div className="size-60 mx-auto">
+        <DotmSquare11 size={100}/>
+      </div>}>
         {projectList.slice(0, list).map((project, indx) => (
           <ProjectCard key={project.title} {...project} index={indx} />
         ))}
       </Suspense>
-      {/* <div className="mt-16 mx-auto text-center">
-        <h2 className="text-5xl  md:text-9xl leading-[0.9] font-semibold tracking-wide">
-          Let’s build <span className="opacity-70">together.</span> Contact Now
-        </h2>
-      </div> */}
     </Container>
   );
 };

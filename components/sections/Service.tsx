@@ -20,8 +20,7 @@ const Service = () => {
       <Items
         Number="01"
         title="Here's How I Can Help You"
-        des=" Delivering comprehensive solutions across various domains of
-            software development"
+        des="Providing expert software engineering services focused on speed optimization, technical SEO, and secure backend infrastructure to drive measurable growth and seamless user experiences."
       />
       <motion.div
         variants={containerVariants}
@@ -30,9 +29,13 @@ const Service = () => {
         className="grid grid-cols-1 md:grid-cols-2"
       >
         {services
-          .filter((service) => service.type === "core")
+          .filter((service) => (service as any).type === "core")
           .map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard
+              key={`core-${(service as any).id ?? index}`}
+              service={service}
+              index={index}
+            />
           ))}
       </motion.div>
     </Container>

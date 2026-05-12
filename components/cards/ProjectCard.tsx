@@ -1,5 +1,5 @@
 import * as motion from "motion/react-client";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/button";
 import Image from "next/image";
 
 interface TechItem {
@@ -80,6 +80,7 @@ const Project = ({
             .map((item, i) => (
               <Button
                 key={i}
+                variant={"secondary"}
                 className="text-lg  px-4 py-2 transition-all duration-300 flex items-center gap-2 cursor-pointer "
               >
                 <span className="text-lg">{item.icon}</span>

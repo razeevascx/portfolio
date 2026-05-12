@@ -50,38 +50,7 @@ export default function page() {
         </div>
       </Container>
 
-      {/* Final CTA */}
-      <Container className="px-5 mt-10">
-        <div className="text-center bg-blue-600/5 border border-blue-500/10  py-20 px-10 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-600/5" />
-          <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
-              Ready to bring your
-              <br />
-              <span className="text-blue-500">idea to life?</span>
-            </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto mb-12 text-lg">
-              I'm currently accepting new projects and consulting opportunities.
-              Let's discuss how we can build something exceptional together.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <a
-                href="/contact"
-                className="group flex items-center gap-3 bg-white text-black font-bold py-4 px-10 rounded-full hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-xl"
-              >
-                Start a Conversation
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a
-                href="/projects"
-                className="text-zinc-400 hover:text-white font-bold transition-colors"
-              >
-                View Past Work
-              </a>
-            </div>
-          </div>
-        </div>
-      </Container>
+
     </>
   );
 }

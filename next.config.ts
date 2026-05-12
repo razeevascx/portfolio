@@ -3,13 +3,15 @@ import createMDX from "@next/mdx";
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com;
-  style-src 'self' 'unsafe-inline';
-  img-src 'self' blob: data: avatars.githubusercontent.com storage.efferd.com images.credly.com;
-  font-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com cal.com cdn.cal.com app.cal.com;
+  style-src 'self' 'unsafe-inline' cal.com cdn.cal.com app.cal.com;
+  img-src 'self' blob: data: avatars.githubusercontent.com storage.efferd.com images.credly.com cal.com app.cal.com;
+  font-src 'self' cal.com app.cal.com;
+  connect-src 'self' cal.com api.cal.com app.cal.com;
+  frame-src cal.com https://cal.com app.cal.com https://app.cal.com;
   object-src 'none';
   base-uri 'self';
-  form-action 'self';
+  form-action 'self' cal.com app.cal.com;
   frame-ancestors 'none';
   block-all-mixed-content;
   upgrade-insecure-requests;
@@ -17,6 +19,7 @@ const ContentSecurityPolicy = `
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  transpilePackages: ["@calcom/atoms"],
   images: {
     remotePatterns: [
       {

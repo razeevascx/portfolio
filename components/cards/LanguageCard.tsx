@@ -17,7 +17,7 @@ export default function LanguageCard({
   return (
     <div
       className={cn(
-        "relative flex items-center gap-6 p-8  border-r border-white/5 bg-black/20 hover:bg-white/8 transition-all group select-none cursor-pointer",
+        "relative flex items-center gap-6 p-8  border-r border-white/5 bg-black/20 hover:bg-white/8 transition-all group select-none cursor-pointer ",
         className,
       )}
     >
