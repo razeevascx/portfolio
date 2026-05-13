@@ -1,15 +1,17 @@
-import { projectList } from "@/lib/constants";
 import Items from "@/components/ui/Items";
 import ProjectCard from "@/components/cards/ProjectCard";
 import Container from "@/components/Container";
 import { Suspense } from "react";
 import { DotmSquare11 } from "../ui/dotm-square-11";
+import { getProjectData } from "@/lib/projectdata";
 
 interface ProjectsProps {
   list?: number;
 }
 
-const Projects: React.FC<ProjectsProps> = ({ list = 3 }) => {
+const Projects = async ({ list = 3 }: ProjectsProps) => {
+  const projects = await getProjectData();
+
   return (
     <Container
       animate={{ opacity: 1, y: 0 }}
@@ -24,7 +26,7 @@ const Projects: React.FC<ProjectsProps> = ({ list = 3 }) => {
       <Suspense fallback={<div className="size-60 mx-auto">
         <DotmSquare11 size={100}/>
       </div>}>
-        {projectList.slice(0, list).map((project, indx) => (
+        {projects.slice(0, list).map((project, indx) => (
           <ProjectCard key={project.title} {...project} index={indx} />
         ))}
       </Suspense>

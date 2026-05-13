@@ -111,6 +111,7 @@ export const quicklink: QuickLink[] = [
     title: "Projects",
     url: "/projects",
   },
+
   {
     id: "about",
     title: "About",
@@ -120,6 +121,11 @@ export const quicklink: QuickLink[] = [
     id: "contact",
     title: "Contact",
     url: "/contact",
+  },
+  {
+    id: "blog",
+    title: "Blog",
+    url: "/blog",
   },
 ];
 

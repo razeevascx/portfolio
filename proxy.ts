@@ -15,12 +15,19 @@ export default function middleware(request: NextRequest) {
       "/projects": "/projects/llms.txt",
       "/services": "/services/llms.txt",
       "/service": "/services/llms.txt",
+      "/blog": "/blog/llms.txt",
     };
 
     if (pathname in routeMap) {
       return NextResponse.rewrite(new URL(routeMap[pathname], request.url));
     }
+        // Handle /blog/[slug]
+    if (pathname.startsWith("/blog/")) {
+      return NextResponse.rewrite(
+        new URL(`${pathname}/llms.txt`, request.url)
+      );
   }
+}
 
   // For all other requests, pass through normally
   return NextResponse.next();

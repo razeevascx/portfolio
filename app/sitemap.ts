@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
+import { getBlogPosts } from "@/lib/notion/blog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://rajeevpuri.com.np";
   const now = new Date();
 
-  return [
+  const staticEntries: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: now,
@@ -35,11 +36,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
-    {
-      url: `${baseUrl}/cal`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
+
   ];
+
+  try {
+    const posts = await getBlogPosts();
+    const postEntries = posts.map((p) => ({
+      url: `${baseUrl}/blog/${p.slug}`,
+      lastModified: p.publishedDate ? new Date(p.publishedDate) : now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })) as MetadataRoute.Sitemap;
+
+    return [...staticEntries, ...postEntries];
+  } catch (e) {
+    return staticEntries;
+  }
 }

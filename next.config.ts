@@ -5,7 +5,7 @@ const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' va.vercel-scripts.com cal.com cdn.cal.com app.cal.com;
   style-src 'self' 'unsafe-inline' cal.com cdn.cal.com app.cal.com;
-  img-src 'self' blob: data: avatars.githubusercontent.com storage.efferd.com images.credly.com cal.com app.cal.com;
+  img-src 'self' blob: data: avatars.githubusercontent.com storage.efferd.com images.credly.com images.unsplash.com brandfetch.com *.amazonaws.com *.s3.*.amazonaws.com cal.com app.cal.com;
   font-src 'self' cal.com app.cal.com;
   connect-src 'self' cal.com api.cal.com app.cal.com;
   frame-src cal.com https://cal.com app.cal.com https://app.cal.com;
@@ -18,8 +18,8 @@ const ContentSecurityPolicy = `
 `;
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  transpilePackages: ["@calcom/atoms"],
   images: {
     remotePatterns: [
       {
@@ -33,6 +33,22 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "images.credly.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "brandfetch.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.s3.*.amazonaws.com",
       },
     ],
   },

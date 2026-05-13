@@ -13,10 +13,10 @@ export default function SectionBlock({
   children,
 }: Readonly<SectionBlockProps>) {
   return (
-    <div className=" mb-10">
-      <div className="flex flex-col gap-1 ">
+    <div className="mb-10">
+      <div className="flex flex-col gap-1">
         <SectionHeading>{title}</SectionHeading>
-        <p className="text-gray-400 max-w-2xl text-lg">{description}</p>
+        <p className="text-foreground-secondary max-w-2xl text-lg font-light leading-relaxed">{description}</p>
       </div>
       <div className="w-full">{children}</div>
     </div>

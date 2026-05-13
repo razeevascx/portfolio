@@ -1,10 +1,11 @@
-"use client";
-
 import * as motion from "motion/react-client";
 import { quicklink } from "@/lib/constants";
 import { Mail } from "lucide-react";
 import Socialicons from "./ui/Socialicons";
 import Container from "@/components/Container";
+import { Suspense } from "react";
+import { currentYear } from "@/lib/utils";
+
 
 function Footer() {
  const llms = [
@@ -65,8 +66,8 @@ function Footer() {
           >
             <h3 className="text-white text-xl font-semibold">Get in Touch</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Have a project in mind? Let’s start the conversation.  I’m ready to help you
-              create something remarkable.
+              Have a project in mind? Let’s start the conversation. I’m ready to
+              help you create something remarkable.
             </p>
             <a
               href="mailto:contact@rajeevpuri.com.np"
@@ -81,11 +82,12 @@ function Footer() {
         <div className="border-t border-gray-800 px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <Socialicons />
-
-            <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Rajeev Puri. All rights
-              reserved.
-            </p>
+            <Suspense>
+              <p className="text-gray-400 text-sm">
+                &copy; {currentYear} Rajeev Puri. All rights
+                reserved.
+              </p>
+            </Suspense>
             <motion.a
               href="#home"
               className="text-gray-400 hover:text-white transition-colors duration-300"

@@ -26,46 +26,46 @@ export default function page() {
       <Container className="px-5 mt-16 space-y-32">
         <section>
           <SectionHeading className="mb-12">Core Philosophy</SectionHeading>
-          <div className="grid md:grid-cols-3  gap-8">
-            <div className="p-8  bg-zinc-900/30 border border-zinc-800/50 hover:border-blue-500/20 transition-all group">
-              <Zap className="w-10 h-10 text-blue-500 mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-3">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 bg-muted/10 border border-border hover:border-primary/50 transition-all duration-normal group rounded-base">
+              <Zap className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-slow" />
+              <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">
                 Performance First
               </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">
+              <p className="text-foreground-secondary text-sm leading-relaxed font-light">
                 I prioritize speed and efficiency in every line of code,
                 ensuring applications are snappy and responsive.
               </p>
             </div>
-            <div className="p-8  bg-zinc-900/30 border border-zinc-800/50 hover:border-blue-500/20 transition-all group">
-              <Target className="w-10 h-10 text-purple-500 mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-3">
+            <div className="p-8 bg-muted/10 border border-border hover:border-primary/50 transition-all duration-normal group rounded-base">
+              <Target className="w-10 h-10 text-primary-light mb-6 group-hover:scale-110 transition-transform duration-slow" />
+              <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">
                 User Centric
               </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">
+              <p className="text-foreground-secondary text-sm leading-relaxed font-light">
                 Design is not just what it looks like, but how it works. I focus
                 on creating intuitive and accessible interfaces.
               </p>
             </div>
-            <div className="p-8  bg-zinc-900/30 border border-zinc-800/50 hover:border-blue-500/20 transition-all group">
-              <Book className="w-10 h-10 text-green-500 mb-6 group-hover:scale-110 transition-transform" />
-              <h3 className="text-xl font-bold text-white mb-3">
+            <div className="p-8 bg-muted/10 border border-border hover:border-primary/50 transition-all duration-normal group rounded-base">
+              <Book className="w-10 h-10 text-emerald-500 mb-6 group-hover:scale-110 transition-transform duration-slow" />
+              <h3 className="text-xl font-bold text-foreground mb-3 tracking-tight">
                 Lifelong Learner
               </h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">
+              <p className="text-foreground-secondary text-sm leading-relaxed font-light">
                 The tech landscape is ever-changing. I dedicate time daily to
                 learn new patterns, tools, and best practices.
               </p>
             </div>
-            <div className="bg-zinc-950/50 border border-zinc-900 p-10 md:p-16 relative overflow-hidden md:col-span-3   ">
+            <div className="bg-muted/5 border border-border p-10 md:p-16 relative overflow-hidden md:col-span-3 rounded-base">
               <SectionHeading className="mb-6 leading-[1.1]">
                 Beyond the Terminal.
               </SectionHeading>
 
-              <p className="text-zinc-400 text-lg leading-relaxed mb-10 max-w-xl">
+              <p className="text-foreground-secondary text-lg leading-relaxed mb-10 max-w-xl font-light">
                 As a Software Engineer dedicated to high-performance builds, I
                 believe great digital products aren't just written in
-                code they’re fueled by a user-centric design philosophy and a
+                code—they’re fueled by a user-centric design philosophy and a
                 curious approach to solving complex problems.
               </p>
 
@@ -86,8 +86,8 @@ export default function page() {
                   {
                     icon: Code,
                     text: "UI Architect",
-                    color: "text-blue-400",
-                    bg: "bg-blue-400/5",
+                    color: "text-primary",
+                    bg: "bg-primary/5",
                   },
                   {
                     icon: Globe,
@@ -98,12 +98,12 @@ export default function page() {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 px-5 py-3 bg-zinc-900/40  border border-zinc-800/50 hover:border-zinc-700 transition-all hover:bg-zinc-900 group"
+                    className="flex items-center gap-3 px-5 py-3 bg-muted/30 border border-border hover:border-primary/50 transition-all duration-normal hover:bg-muted/50 group rounded-base"
                   >
                     <item.icon
-                      className={`w-5 h-5 ${item.color} group-hover:scale-110 transition-transform`}
+                      className={`w-5 h-5 ${item.color} group-hover:scale-110 transition-transform duration-slow`}
                     />
-                    <span className="text-zinc-300 font-medium">
+                    <span className="meta-label text-foreground-secondary group-hover:text-foreground">
                       {item.text}
                     </span>
                   </div>
