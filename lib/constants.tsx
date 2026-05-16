@@ -60,43 +60,17 @@ interface SocialLink {
   username?: string;
 }
 
-export interface Education {
-  degree: string;
-  school: string;
-  logo: string;
-  location: string;
-  year: string;
-  experiences: string[];
-  link: string;
-}
 
-interface TechStack {
-  [key: string]: {
-    id: string;
-    icon: React.ReactNode;
-  };
-}
-
-export interface Project {
-  title: string;
-  description: string;
-  link: string;
-  liveLink?: string;
-  tech: TechStack;
-  featured?: boolean;
-  stars?: number;
-  forks?: number;
-  list?: string[];
-}
 
 export interface Service {
   id: string;
   icon: React.ReactNode;
-illustration?: React.ComponentType | React.ReactNode;
+  illustration?: React.ComponentType | React.ReactNode;
   category: string;
   type: "core" | "capable";
   title: string;
   description: string;
+  gridClass: string;
   technologies: string[];
 }
 
@@ -169,326 +143,123 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
-export const projectList = [
-  {
-    title: "Portfolio",
-    description:
-      "Portfolio website to showcase my ideas - A modern, responsive personal portfolio built with Next.js, featuring smooth animations and professional design.",
-    link: "https://github.com/razeevascx/Portfolio",
-    liveLink: "https://rajeevpuri.com.np",
-    tech: {
-      nextjs: {
-        id: "Next.js",
-        icon: (
-          <Nextjs
-            width={24}
-            height={24}
-            className="text-[#000000] dark:text-white"
-          />
-        ),
-      },
-      react: {
-        id: "React",
-        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
-      },
-      tailwind: {
-        id: "Tailwind CSS",
-        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
-      },
-      typescript: {
-        id: "TypeScript",
-        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
-      },
-      framer: {
-        id: "Framer Motion",
-        icon: <MotionDark width={24} height={24} className="text-[#0055FF]" />,
-      },
-    },
-    featured: true,
-  },
-  {
-    title: "TeraBox Bot",
-    description:
-      "Telegram bot for TeraBox automation - An advanced bot with 2 stars and 3 forks, featuring file management and download assistance.",
-    link: "https://github.com/razeevascx/terabox_bot",
-    tech: {
-      python: {
-        id: "Python",
-        icon: <Python width={24} height={24} className="text-[#3776AB]" />,
-      },
-      docker: {
-        id: "Docker",
-        icon: <Docker width={24} height={24} className="text-[#2496ED]" />,
-      },
-    },
-    featured: true,
-    stars: 2,
-    forks: 3,
-  },
-  {
-    title: "MailRef",
-    description:
-      "A temporary email service built with Next.js and Supabase, allowing users to generate disposable email addresses for privacy protection.",
-    link: "https://github.com/razeevascx/MailRef",
-    tech: {
-      nextjs: {
-        id: "Next.js",
-        icon: (
-          <Nextjs
-            width={24}
-            height={24}
-            className="text-[#000000] dark:text-white"
-          />
-        ),
-      },
-      tailwind: {
-        id: "Tailwind CSS",
-        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
-      },
-      typescript: {
-        id: "TypeScript",
-        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
-      },
-      supabase: {
-        id: "Supabase",
-        icon: <Supabase width={24} height={24} className="text-[#3ECF8E]" />,
-      },
-    },
-  },
-  {
-    title: "Simple Bank Management System",
-    description:
-      "A banking system using Java - Comprehensive banking application with account management, transactions, and user authentication.",
-    link: "https://github.com/razeevascx/Bank_Management_System",
-    tech: {
-      java: {
-        id: "Java",
-        icon: <Java width={24} height={24} className="text-[#ED8B00]" />,
-      },
-      database: {
-        id: "Database",
-        icon: <MongoDBDark width={24} height={24} className="text-[#4DB33D]" />,
-      },
-    },
-  },
-  {
-    title: "News Template",
-    description:
-      "A modern, responsive news website template with clean design, article management, and optimized reading experience.",
-    link: "https://github.com/razeevascx/news-temp",
-    tech: {
-      react: {
-        id: "React",
-        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
-      },
-      tailwind: {
-        id: "Tailwind CSS",
-        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
-      },
-      vite: {
-        id: "Vite",
-        icon: <Vite width={24} height={24} className="text-[#646CFF]" />,
-      },
-    },
-  },
-  {
-    title: "School Management System",
-    description:
-      "A comprehensive system to manage school operations, including student enrollment, attendance tracking, and grade management.",
-    link: "https://drive.google.com/file/d/17FeCxwSDwn6E1xAZLi-f313TcjAebRVw/view",
-    tech: {
-      react: {
-        id: "React",
-        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
-      },
-      nodejs: {
-        id: "Node.js",
-        icon: <Nodejs width={24} height={24} className="text-[#339933]" />,
-      },
-      mongodb: {
-        id: "MongoDB",
-        icon: <MongoDBDark width={24} height={24} className="text-[#47A248]" />,
-      },
-      express: {
-        id: "Express",
-        icon: <Nodejs width={24} height={24} className="text-white" />,
-      },
-      redux: {
-        id: "Redux",
-        icon: <Redux width={24} height={24} className="text-[#764ABC]" />,
-      },
-    },
-  },
-  {
-    title: "Qwizzed",
-    description:
-      "An interactive quiz application for testing knowledge with real-time scoring and detailed analytics. Built with modern TypeScript technologies.",
-    link: "https://github.com/razeevascx/qwizzed",
-    tech: {
-      typescript: {
-        id: "TypeScript",
-        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
-      },
-      react: {
-        id: "React",
-        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
-      },
-      tailwind: {
-        id: "Tailwind CSS",
-        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
-      },
-    },
-    stars: 1,
-  },
-  {
-    title: "Z Xplore",
-    description:
-      "IBM Z Xplore Dev Container - Packages core tooling for IBM Z Xplore mainframe development without manual setup, enabling streamlined containerized development.",
-    link: "https://github.com/razeevascx/z-xplore",
-    tech: {
-      docker: {
-        id: "Docker",
-        icon: <Docker width={24} height={24} className="text-[#2496ED]" />,
-      },
-    },
-  },
-  {
-    title: "New Tab",
-    description:
-      "A beautiful and customizable new tab page extension. Provides an elegant dashboard with quick access to frequently used features and personalization options.",
-    link: "https://github.com/razeevascx/new-tab",
-    tech: {
-      vue: {
-        id: "Vue",
-        icon: <Vue width={24} height={24} className="text-[#4FC08D]" />,
-      },
-    },
-  },
-  {
-    title: "Passkey Demo",
-    description:
-      "A demonstration project showcasing passwordless authentication using passkeys. Implements modern security standards for user authentication.",
-    link: "https://github.com/razeevascx/passkey-demo",
-    tech: {
-      typescript: {
-        id: "TypeScript",
-        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
-      },
-    },
-  },
-];
-
-
-
 export const services = [
-
-    {
-      id: "01",
-      icon: <Code />,
-      illustration: <FullStackIllustration />,
-      title: "Scalable Next.js & Full-Stack Development",
-      description:
-        "Expert end-to-end web applications optimized for Core Web Vitals, speed, and long-term scalability. I build secure backends and high-fidelity frontends designed to maximize user retention and conversion.",
-      technologies: [
-        "TypeScript",
-        "Next.js (App Router)",
-        "Node.js",
-        "PostgreSQL",
-        "Performance Optimization",
-        "Tailwind CSS",
-      ],
-      category: "Software Engineering",
-      type: "core",
-    },
-    {
-      id: "02",
-      icon: <PaletteIcon />,
-      illustration: <BrandingIllustration />,
-      title: "Brand Strategy & Digital Identity Systems",
-      description:
-        "Creating strategic visual identities that build market authority and trust. From professional logo design to comprehensive brand guidelines, I ensure your business is recognized and memorable.",
-      technologies: [
-        "Brand Architecture",
-        "Figma",
-        "Design Systems",
-        "Typography",
-        "Visual Storytelling",
-      ],
-      category: "Digital Branding",
-      type: "capable",
-    },
-    {
-      id: "03",
-      icon: <Palette />,
-      illustration: <UIUXIllustration />,
-      title: "Conversion-Focused UI/UX & Product Design",
-      description:
-        "User-centric interfaces engineered for accessibility (WCAG) and high usability. I transform complex business requirements into intuitive prototypes that simplify the user journey.",
-      technologies: [
-        "Figma",
-        "Mobile-First Design",
-        "Wireframing",
-        "User Testing",
-        "Framer Motion",
-        "Accessibility",
-      ],
-      category: "UX/UI Design",
-      type: "core",
-    },
-    {
-      id: "04",
-      icon: <Database />,
-      illustration: <DatabaseIllustration />,
-      title: "Database Architecture & Query Optimization",
-      description:
-        "Reliable data management for high-traffic applications. I design optimized schemas and efficient queries for SQL and NoSQL to keep your platform fast under heavy user loads.",
-      technologies: [
-        "PostgreSQL",
-        "MongoDB",
-        "Redis",
-        "Prisma ORM",
-        "Indexing Strategies",
-        "Data Modeling",
-      ],
-      category: "Backend & Data",
-      type: "core",
-    },
-    {
-      id: "05",
-      icon: <Layers />,
-      illustration: <ArchitectureIllustration />,
-      title: "Enterprise System Design & Architecture",
-      description:
-        "Future-proof digital infrastructure built for business growth. I apply clean architecture and scalable design patterns to ensure your software evolves with your user base.",
-      technologies: [
-        "Microservices",
-        "Serverless Architecture",
-        "REST & GraphQL",
-        "System Patterns",
-        "Load Balancing",
-      ],
-      category: "Systems Architecture",
-      type: "core",
-    },
-    {
-      id: "06",
-      icon: <Infinity />,
-      illustration: <DevOpsIllustration />,
-      title: "Cloud DevOps & Infrastructure Security",
-      description:
-        "Automated CI/CD pipelines and secure cloud environments. I implement robust containerization and monitoring so you can ship features faster without infrastructure bottlenecks.",
-      technologies: [
-        "AWS/Vercel",
-        "Docker",
-        "Kubernetes",
-        "GitHub Actions",
-        "Terraform",
-        "Cloud Monitoring",
-      ],
-      category: "DevOps & Cloud",
-      type: "capable",
-    },
-
+  {
+    id: "01",
+    icon: <PaletteIcon />,
+    illustration: <BrandingIllustration />,
+    title: "Brand Strategy & Digital Identity Systems",
+    description: [
+      "Strategic visual identities that build market authority and trust",
+      "Professional logo design tailored to your business goals",
+      "Comprehensive brand guidelines for consistency across all touchpoints",
+      "Memorable brand systems that ensure recognition at every interaction",
+    ],
+    gridClass: "md:col-span-2 md:row-span-1",
+    technologies: [
+      "Brand Architecture",
+      "Figma",
+      "Design Systems",
+      "Typography",
+    ],
+    category: "Digital Branding",
+    type: "capable",
+  },
+  {
+    id: "02",
+    icon: <Code />,
+    illustration: <FullStackIllustration />,
+    title: "Scalable Next.js & Full-Stack Development",
+    description: [
+      "End-to-end web applications optimized for Core Web Vitals and speed",
+      "Secure backend architecture built for long-term scalability",
+      "High-fidelity frontends engineered to maximize user retention",
+      "Conversion-optimized experiences designed to grow with your business",
+    ],
+    technologies: [
+      "TypeScript",
+      "PostgreSQL",
+      "Performance Optimization",
+      "Tailwind CSS",
+    ],
+    category: "Software Engineering",
+    type: "core",
+    gridClass: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: "03",
+    icon: <Palette />,
+    illustration: <UIUXIllustration />,
+    title: "Conversion-Focused UI/UX & Product Design",
+    description: [
+      "User-centric interfaces engineered for accessibility (WCAG compliance)",
+      "High-usability designs that simplify complex user journeys",
+      "Interactive prototypes that translate business requirements into clarity",
+      "Tested flows that reduce friction and drive conversions",
+    ],
+    technologies: ["Figma", "Wireframing", "User Testing", "Framer Motion"],
+    category: "UX/UI Design",
+    type: "core",
+    gridClass: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: "04",
+    icon: <Database />,
+    illustration: <DatabaseIllustration />,
+    title: "Database Architecture & Query Optimization",
+    description: [
+      "Optimized schemas designed for high-traffic, data-intensive applications",
+      "Efficient SQL and NoSQL queries that keep your platform fast under load",
+      "Reliable data management strategies built for scale and resilience",
+      "Indexing and modeling approaches that prevent performance bottlenecks",
+    ],
+    technologies: [
+      "Redis",
+      "Prisma ORM",
+      "Indexing Strategies",
+      "Data Modeling",
+    ],
+    category: "Backend & Data",
+    type: "core",
+    gridClass: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: "05",
+    icon: <Layers />,
+    illustration: <ArchitectureIllustration />,
+    title: "Enterprise System Design & Architecture",
+    description: [
+      "Future-proof infrastructure built to scale with your user base",
+      "Clean architecture and design patterns for long-term maintainability",
+      "Modular systems that evolve seamlessly as your business grows",
+      "Technical foundations that support rapid feature development",
+    ],
+    technologies: [
+      "Microservices",
+      "Serverless Architecture",
+      "REST & GraphQL",
+      "Load Balancing",
+    ],
+    category: "Systems Architecture",
+    type: "core",
+    gridClass: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: "06",
+    icon: <Infinity />,
+    illustration: <DevOpsIllustration />,
+    title: "Cloud DevOps & Infrastructure Security",
+    description: [
+      "Automated CI/CD pipelines that accelerate your release cycles",
+      "Secure cloud environments with robust containerization strategies",
+      "Monitoring and alerting systems to catch issues before they escalate",
+      "Infrastructure that removes bottlenecks so your team ships faster",
+    ],
+    technologies: ["AWS/Vercel", "Docker", "Kubernetes", "GitHub Actions"],
+    category: "DevOps & Cloud",
+    type: "capable",
+    gridClass: "md:col-span-2 md:row-span-1",
+  },
 ];
 
 export const processSteps = [

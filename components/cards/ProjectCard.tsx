@@ -111,7 +111,7 @@ const Project = ({
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="border group transition-colors duration-normal flex items-center hover:bg-white/[0.02] p-6 border-border hover:border-primary/50"
+      className="border group transition-colors duration-normal flex items-center hover:bg-white/2 p-6 border-border hover:border-primary/50"
     >
       <div className="max-w-4xl space-y-8 p-4 md:12 flex-1">
         <p className="font-mono inline-block bg-foreground text-background px-3 py-1 text-sm font-bold tracking-widest">

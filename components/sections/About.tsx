@@ -1,15 +1,25 @@
 import * as motion from "motion/react-client";
 import Items from "@/components/ui/Items";
 import Container from "@/components/Container";
-import { libraries } from "@/lib/skills-data";
 import ProfileCard from "../ui/ProfileCard";
-import SkillCard1 from "@/components/cards/SkillCard";
-import CertificateCard from "@/components/cards/CertificateCard";
-import SectionHeading from "@/components/ui/SectionHeading";
+import { getProjectData } from "@/lib/projectdata";
 import { getCredlyBadges } from "@/lib/credly";
+import { getBlogPosts } from "@/lib/notion/blog";
+
 
 const About = async () => {
-  const badges = await getCredlyBadges();
+  const [projects, badges, posts] = await Promise.all([
+    getProjectData(),
+    getCredlyBadges(),
+    getBlogPosts()
+  ]);
+
+  const stats = {
+    projects: projects.length,
+    badges: badges.length,
+    posts: posts.length,
+    stars: projects.reduce((acc, p) => acc + (p.stars || 0), 0)
+  };
 
   return (
     <Container
@@ -25,28 +35,8 @@ const About = async () => {
         des="Full-stack developer specializing in high-performance web applications built with clean, scalable code to drive user growth and digital transformation."
       />
 
-      <ProfileCard />
+      <ProfileCard stats={stats} />
 
-      {badges && badges.length > 0 && (
-        <motion.div className="mb-8 space-y-8">
-          <div>
-            <SectionHeading className="mb-8">
-              Certifications & Badges
-            </SectionHeading>
-            {badges.map((item) => (
-              <CertificateCard key={item.id} item={item} />
-            ))}
-          </div>
-        </motion.div>
-      )}
-      <div className="mb-16">
-        <SectionHeading className="mb-12">Frameworks & Tools</SectionHeading>
-        <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
-          {libraries.map((skill) => (
-            <SkillCard1 key={skill.label} skill={skill} />
-          ))}
-        </div>
-      </div>
     </Container>
   );
 };

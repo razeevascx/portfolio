@@ -43,15 +43,14 @@ export function BlogCode({
     <div className="my-6 md:my-8 rounded-base overflow-hidden border border-border">
       <div className="flex items-center justify-between px-5 py-3 bg-muted/30 backdrop-blur-md border-b border-border">
         <div className="flex items-center gap-4">
-          {title ? (
+          <div className="flex gap-1.5">
+            <div className="w-2 h-2 bg-primary"></div>
+            <div className="w-2 h-2 bg-zinc-500"></div>
+            <div className="w-2 h-2 bg-zinc-700"></div>
+          </div>
+          {title ?? (
             <span className="meta-label text-foreground-muted flex items-center gap-2">
-              <FileCode size={14} className="text-primary" />
-              {title}
-            </span>
-          ) : (
-            <span className="meta-label text-foreground-muted flex items-center gap-1.5">
-              <Terminal size={12} className="text-primary" />
-              {language}
+              {title || language}
             </span>
           )}
         </div>
@@ -64,7 +63,10 @@ export function BlogCode({
           >
             {copied ? (
               <>
-                <Check size={14} className="animate-in zoom-in duration-normal" />
+                <Check
+                  size={14}
+                  className="animate-in zoom-in duration-normal"
+                />
                 <span>Copied</span>
               </>
             ) : (
@@ -78,9 +80,7 @@ export function BlogCode({
       </div>
 
       <div className="relative overflow-hidden bg-background">
-        <pre
-          className="text-[13px] md:text-sm font-mono leading-relaxed py-6 transition-opacity duration-slow"
-        >
+        <pre className="text-[13px] md:text-sm font-mono leading-relaxed py-6 transition-opacity duration-slow">
           {showLineNumbers ? (
             <table className="w-full">
               <tbody>
@@ -110,10 +110,19 @@ export function BlogCode({
             />
           )}
         </pre>
-        <div className="px-5 py-2 bg-muted/20 border-t border-border flex justify-between items-center">
+
+
+        <div
+          className={`px-5 py-2 border-t  bg-black/5 flex justify-between items-center font-mono text-sm uppercase tracking-[0.2em] opacity-30`}
+        >
+          {" "}
           <div className="flex items-center gap-4 meta-label text-foreground-muted">
-            <span className="flex items-center gap-1"><ChevronRight size={10} /> UTF-8</span>
-            <span className="flex items-center gap-1"><Hash size={10} /> {lines.length} Lines</span>
+            <span className="flex items-center gap-1">
+              <ChevronRight size={10} /> UTF-8
+            </span>
+            <span className="flex items-center gap-1">
+              <Hash size={10} /> {lines.length} Lines
+            </span>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ interface BlogPictureProps {
   caption?: string;
   width?: number;
   height?: number;
+  priority?: boolean;
 }
 
 export function BlogPicture({
@@ -14,6 +15,7 @@ export function BlogPicture({
   caption,
   width = 800,
   height = 400,
+  priority = false,
 }: BlogPictureProps) {
   return (
     <figure className="my-8 md:my-12">
@@ -24,7 +26,7 @@ export function BlogPicture({
           width={width}
           height={height}
           className="w-full h-auto object-cover"
-          priority={false}
+          priority={priority}
         />
       </div>
       {caption && (

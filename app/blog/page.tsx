@@ -2,34 +2,66 @@ import { getBlogPosts } from "@/lib/notion/blog";
 import { Suspense } from "react";
 import { DotmSquare11 } from "@/components/ui/dotm-square-11";
 import { BlogPostCard } from "@/components/sections/blog";
+import Items from "@/components/ui/Items";
+import Container from "@/components/Container";
+import * as motion from "motion/react-client";
 
 export const metadata = {
   title: "Blog",
   description: "Thoughts on web development, Next.js, and building great products.",
 };
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.215, 0.61, 0.355, 1] as const,
+    },
+  },
+};
+
 export default async function BlogPage() {
   const posts = await getBlogPosts();
 
-  const featuredPost = posts.find((p) => p.featured) || posts[0];
-  const latestPosts = posts.filter((p) => p.id !== featuredPost?.id);
-
   return (
-    <div className="pt-20 px-8 pb-20">
-      <h1 className="text-5xl md:text-7xl font-medium tracking-tight leading-[0.95] text-foreground mb-6">
-        Blog
-      </h1>
-      <p className="text-foreground-secondary text-lg mb-16 font-light max-w-2xl leading-relaxed">
-        Thoughts on web development, Next.js, React, and building great digital
-        experiences.
-      </p>
+    <Container
+      id="blog"
+      className="w-full p-5"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <motion.div variants={itemVariants}>
+        <Items
+          Number="05"
+          title="Blog"
+          des="Thoughts on web development, Next.js, React, and building great digital
+          experiences."
+        />
+      </motion.div>
 
       {posts.length === 0 ? (
-        <div className="text-center py-20 border border-dashed border-border rounded-base">
+        <motion.div
+          variants={itemVariants}
+          className="text-center py-20 border border-dashed border-border rounded-base"
+        >
           <p className="text-foreground-muted text-lg tracking-widest font-bold">
             No blog posts yet. Check back soon!
           </p>
-        </div>
+        </motion.div>
       ) : (
         <Suspense
           fallback={
@@ -38,25 +70,18 @@ export default async function BlogPage() {
             </div>
           }
         >
-          <div className="grid grid-cols-1 lg:grid-cols-3 ">
-            {/* Featured Post - Left Column */}
-            {featuredPost && (
-              <div className="lg:col-span-2">
-                <BlogPostCard key={featuredPost.id} post={featuredPost} featured />
-              </div>
-            )}
-
-            {/* Latest Posts - Right Column */}
-            <div className="lg:col-span-1 ">
-
-                {latestPosts.slice(0, 2).map((post) => (
-                  <BlogPostCard key={post.id} post={post} />
-                ))}
-            </div>
-
-          </div>
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-1 gap-6"
+          >
+            {posts.map((post, index) => (
+              <motion.div key={post.id} variants={itemVariants}>
+                <BlogPostCard post={post} priority={index === 0} />
+              </motion.div>
+            ))}
+          </motion.div>
         </Suspense>
       )}
-    </div>
+    </Container>
   );
 }

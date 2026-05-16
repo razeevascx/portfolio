@@ -29,25 +29,30 @@ export default function CopyCommand({
   return (
     <button
       onClick={handleCopy}
-      className={`flex flex-col md:flex-row md:items-center md:justify-between px-3 md:px-4 py-3 md:py-3 gap-3 md:gap-0 border border-white/15 transition-all bg-white/10 hover:bg-white/15 backdrop-blur-lg group cursor-pointer w-full  ${className}`}
+      className={`flex flex-col sm:flex-row sm:items-center sm:justify-between px-4 py-3 gap-3 border border-white/10 transition-all bg-white/[0.03] hover:bg-white/[0.08] backdrop-blur-md group cursor-pointer w-full rounded-base text-left ${className}`}
     >
-      <div className="flex flex-col md:flex-row md:items-center gap-2 flex-1">
-        <span className="text-base md:text-lg font-medium text-white group-hover:text-white/80 transition-colors whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 flex-1 min-w-0">
+        <span className="text-sm md:text-base font-bold text-white whitespace-nowrap shrink-0">
           {label}
         </span>
-        <code className="text-xs md:text-sm font-black text-blue-400 px-2 py-1 rounded bg-white/5 group-hover:bg-white/10 transition-colors overflow-x-auto">
-          {command}
-        </code>
+        <div className="flex-1 min-w-0 w-full rounded bg-black/40 px-3 py-1.5 border border-white/5 group-hover:border-white/10 transition-colors">
+          <code className="block text-xs md:text-sm font-mono text-blue-400 overflow-x-auto whitespace-nowrap scrollbar-none">
+            {command}
+          </code>
+        </div>
       </div>
 
-      <div className="flex items-center justify-center md:ml-4 md:pl-4 md:border-l border-white/10">
+      <div className="flex items-center justify-center shrink-0 sm:ml-2 sm:pl-4 sm:border-l border-white/10 min-h-[24px]">
         {copied ? (
-          <Check size={16} className="text-green-400" />
+          <div className="flex items-center gap-2 text-green-400">
+            <Check size={16} />
+            <span className="text-[10px] font-black uppercase tracking-widest sm:hidden">Copied</span>
+          </div>
         ) : (
-          <Copy
-            size={16}
-            className="text-white/50 group-hover:text-white/80 transition-colors duration-200"
-          />
+          <div className="flex items-center gap-2 text-white/50 group-hover:text-white transition-colors">
+            <Copy size={16} />
+            <span className="text-[10px] font-black uppercase tracking-widest sm:hidden">Copy</span>
+          </div>
         )}
       </div>
     </button>

@@ -9,11 +9,19 @@ import Container from "@/components/Container";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import { useMDXComponents } from "@/mdx-components";
 import Image from "next/image";
+import * as motion from "motion/react-client";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
-
 
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
@@ -52,6 +60,29 @@ export async function generateMetadata(props: BlogPostPageProps) {
   } as any;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.215, 0.61, 0.355, 1],
+    },
+  },
+};
+
 export default async function BlogPostPage(props: BlogPostPageProps) {
   const params = await props.params;
   const post = await getBlogPostBySlug(params.slug);
@@ -75,11 +106,33 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
   };
 
   return (
-    <Container className="pt-24 pb-20 px-8">
+    <Container
+      className="pt-6 pb-20 px-8"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <motion.div variants={itemVariants}>
+        <Breadcrumb className="text-lg mb-10">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{post.title}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </motion.div>
+
       <article>
         <header className="mb-12">
           {post.image && (
-            <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
+            <motion.div 
+              variants={itemVariants}
+              className="relative w-full h-96 mb-8 rounded-lg overflow-hidden"
+            >
               <Image
                 src={post.image}
                 alt={post.title}
@@ -88,12 +141,18 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
                 className="object-cover"
                 priority
               />
-            </div>
+            </motion.div>
           )}
-          <h1 className=" font-semibold  text-foreground text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
+          <motion.h1 
+            variants={itemVariants}
+            className="font-semibold text-foreground text-4xl md:text-5xl lg:text-6xl leading-[0.95]"
+          >
             {post.title}
-          </h1>
-          <div className="meta-label text-foreground-muted flex items-center gap-4 mt-6">
+          </motion.h1>
+          <motion.div 
+            variants={itemVariants}
+            className="meta-label text-foreground-muted flex items-center gap-4 mt-6"
+          >
             {post.publishedDate && (
               <time dateTime={post.publishedDate}>
                 {formatDate(post.publishedDate)}
@@ -101,12 +160,15 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
             )}
             <span>•</span>
             <span>{post.readingTime || 0} min read</span>
-          </div>
+          </motion.div>
         </header>
 
-        <div className="mt-10 pt-10 border-t border-border text-foreground-secondary leading-relaxed font-light">
+        <motion.div 
+          variants={itemVariants}
+          className="mt-10 pt-10 border-t border-border text-foreground-secondary leading-relaxed font-light"
+        >
           {markdown && <MDXRemote source={markdown} components={components} />}
-        </div>
+        </motion.div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}

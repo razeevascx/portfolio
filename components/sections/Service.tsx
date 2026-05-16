@@ -26,15 +26,16 @@ const Service = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="grid grid-cols-1 md:grid-cols-2"
+        className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-max"
       >
-        {services
-          .filter((service) => (service as any).type === "core")
+        {services.slice(0, 5)
           .map((service, index) => (
             <ServiceCard
               key={`core-${(service as any).id ?? index}`}
               service={service}
               index={index}
+                            className={service.gridClass}
+
             />
           ))}
       </motion.div>
