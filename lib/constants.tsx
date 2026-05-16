@@ -302,3 +302,212 @@ export const processSteps = [
     },
 
 ];
+
+export const projectList = [
+  {
+    title: "Portfolio",
+    description:
+      "Portfolio website to showcase my ideas - A modern, responsive personal portfolio built with Next.js, featuring smooth animations and professional design.",
+    link: "https://github.com/razeevascx/Portfolio",
+    liveLink: "https://rajeevpuri.com.np",
+    tech: {
+      nextjs: {
+        id: "Next.js",
+        icon: (
+          <Nextjs
+            width={24}
+            height={24}
+            className="text-[#000000] dark:text-white"
+          />
+        ),
+      },
+      react: {
+        id: "React",
+        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
+      },
+      tailwind: {
+        id: "Tailwind CSS",
+        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
+      },
+      typescript: {
+        id: "TypeScript",
+        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
+      },
+      framer: {
+        id: "Framer Motion",
+        icon: <MotionDark width={24} height={24} className="text-[#0055FF]" />,
+      },
+    },
+    featured: true,
+  },
+  {
+    title: "TeraBox Bot",
+    description:
+      "Telegram bot for TeraBox automation - An advanced bot with 2 stars and 3 forks, featuring file management and download assistance.",
+    link: "https://github.com/razeevascx/terabox_bot",
+    tech: {
+      python: {
+        id: "Python",
+        icon: <Python width={24} height={24} className="text-[#3776AB]" />,
+      },
+      docker: {
+        id: "Docker",
+        icon: <Docker width={24} height={24} className="text-[#2496ED]" />,
+      },
+    },
+    featured: true,
+    stars: 2,
+    forks: 3,
+  },
+  {
+    title: "MailRef",
+    description:
+      "A temporary email service built with Next.js and Supabase, allowing users to generate disposable email addresses for privacy protection.",
+    link: "https://github.com/razeevascx/MailRef",
+    tech: {
+      nextjs: {
+        id: "Next.js",
+        icon: (
+          <Nextjs
+            width={24}
+            height={24}
+            className="text-[#000000] dark:text-white"
+          />
+        ),
+      },
+      tailwind: {
+        id: "Tailwind CSS",
+        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
+      },
+      typescript: {
+        id: "TypeScript",
+        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
+      },
+      supabase: {
+        id: "Supabase",
+        icon: <Supabase width={24} height={24} className="text-[#3ECF8E]" />,
+      },
+    },
+  },
+  {
+    title: "Simple Bank Management System",
+    description:
+      "A banking system using Java - Comprehensive banking application with account management, transactions, and user authentication.",
+    link: "https://github.com/razeevascx/Bank_Management_System",
+    tech: {
+      java: {
+        id: "Java",
+        icon: <Java width={24} height={24} className="text-[#ED8B00]" />,
+      },
+      database: {
+        id: "Database",
+        icon: <MongoDBDark width={24} height={24} className="text-[#4DB33D]" />,
+      },
+    },
+  },
+  {
+    title: "News Template",
+    description:
+      "A modern, responsive news website template with clean design, article management, and optimized reading experience.",
+    link: "https://github.com/razeevascx/news-temp",
+    tech: {
+      react: {
+        id: "React",
+        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
+      },
+      tailwind: {
+        id: "Tailwind CSS",
+        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
+      },
+      vite: {
+        id: "Vite",
+        icon: <Vite width={24} height={24} className="text-[#646CFF]" />,
+      },
+    },
+  },
+  {
+    title: "School Management System",
+    description:
+      "A comprehensive system to manage school operations, including student enrollment, attendance tracking, and grade management.",
+    link: "https://drive.google.com/file/d/17FeCxwSDwn6E1xAZLi-f313TcjAebRVw/view",
+    tech: {
+      react: {
+        id: "React",
+        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
+      },
+      nodejs: {
+        id: "Node.js",
+        icon: <Nodejs width={24} height={24} className="text-[#339933]" />,
+      },
+      mongodb: {
+        id: "MongoDB",
+        icon: <MongoDBDark width={24} height={24} className="text-[#47A248]" />,
+      },
+      express: {
+        id: "Express",
+        icon: <Nodejs width={24} height={24} className="text-white" />,
+      },
+      redux: {
+        id: "Redux",
+        icon: <Redux width={24} height={24} className="text-[#764ABC]" />,
+      },
+    },
+  },
+  {
+    title: "Qwizzed",
+    description:
+      "An interactive quiz application for testing knowledge with real-time scoring and detailed analytics. Built with modern TypeScript technologies.",
+    link: "https://github.com/razeevascx/qwizzed",
+    tech: {
+      typescript: {
+        id: "TypeScript",
+        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
+      },
+      react: {
+        id: "React",
+        icon: <ReactLight width={24} height={24} className="text-[#61DAFB]" />,
+      },
+      tailwind: {
+        id: "Tailwind CSS",
+        icon: <TailwindCSS width={24} height={24} className="text-[#06B6D4]" />,
+      },
+    },
+    stars: 1,
+  },
+  {
+    title: "Z Xplore",
+    description:
+      "IBM Z Xplore Dev Container - Packages core tooling for IBM Z Xplore mainframe development without manual setup, enabling streamlined containerized development.",
+    link: "https://github.com/razeevascx/z-xplore",
+    tech: {
+      docker: {
+        id: "Docker",
+        icon: <Docker width={24} height={24} className="text-[#2496ED]" />,
+      },
+    },
+  },
+  {
+    title: "New Tab",
+    description:
+      "A beautiful and customizable new tab page extension. Provides an elegant dashboard with quick access to frequently used features and personalization options.",
+    link: "https://github.com/razeevascx/new-tab",
+    tech: {
+      vue: {
+        id: "Vue",
+        icon: <Vue width={24} height={24} className="text-[#4FC08D]" />,
+      },
+    },
+  },
+  {
+    title: "Passkey Demo",
+    description:
+      "A demonstration project showcasing passwordless authentication using passkeys. Implements modern security standards for user authentication.",
+    link: "https://github.com/razeevascx/passkey-demo",
+    tech: {
+      typescript: {
+        id: "TypeScript",
+        icon: <TypeScript width={24} height={24} className="text-[#3178C6]" />,
+      },
+    },
+  },
+];

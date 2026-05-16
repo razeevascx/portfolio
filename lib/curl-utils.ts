@@ -1,6 +1,4 @@
-// ANSI 256-color codes - Updated to match design system
 export const colors = {
-  // Primary colors
   GREEN: "\x1b[38;5;82m",
   YELLOW: "\x1b[38;5;226m",
   CYAN: "\x1b[38;5;51m",
@@ -12,7 +10,6 @@ export const colors = {
   ORANGE: "\x1b[38;5;208m",
   PINK: "\x1b[38;5;213m",
 
-  // Extended palette for gradients
   DARK_BLUE: "\x1b[38;5;17m",
   DEEP_PURPLE: "\x1b[38;5;93m",
   LIGHT_PURPLE: "\x1b[38;5;183m",
@@ -21,167 +18,235 @@ export const colors = {
   GOLD: "\x1b[38;5;220m",
   LIGHT_YELLOW: "\x1b[38;5;228m",
 
-  // Neutral colors
   WHITE: "\x1b[38;5;231m",
   LIGHT_GRAY: "\x1b[38;5;250m",
   GRAY: "\x1b[38;5;244m",
   DARK_GRAY: "\x1b[38;5;238m",
 
-  // Reset
-  RESET: "\x1b[0m",
-
-  // Bold/styles
   BOLD: "\x1b[1m",
   DIM: "\x1b[2m",
-};
+  RESET: "\x1b[0m",
+} as const;
 
-const url = process.env.BASE_URL || "rajeevpuri.com.np";
+type Color = keyof typeof colors;
 
-// Cache for ANSI code regex to avoid recompiling
-const ansiCodeRegex = /\x1b\[[0-9;]*m/g;
 
-// Helper to calculate visible length (strips ANSI codes)
-function getVisibleLength(text: string): number {
-  return text.replace(ansiCodeRegex, "").length;
+/** Regex compiled once at module load (not per-call). */
+const ANSI_RE = /\x1b\[[0-9;]*m/g;
+
+/** Returns the printable (visible) length of a string, ignoring ANSI escapes. */
+export function visibleLength(text: string): number {
+  return text.replace(ANSI_RE, "").length;
+}
+
+/** Strips all ANSI escape codes from a string. */
+export function stripAnsi(text: string): string {
+  return text.replace(ANSI_RE, "");
+}
+
+/** Wraps a colour code around text and resets afterwards. */
+export function paint(color: Color, text: string): string {
+  return `${colors[color]}${text}${colors.RESET}`;
+}
+
+/** Centers a pre-coloured line inside a fixed character width, padding with spaces. */
+function centerInWidth(line: string, width: number): string {
+  const len = visibleLength(line);
+  const left = Math.max(0, Math.floor((width - len) / 2));
+  const right = Math.max(0, width - len - left);
+  return " ".repeat(left) + line + " ".repeat(right);
+}
+
+// ─── URL ─────────────────────────────────────────────────────────────────────
+
+const DEFAULT_URL = process.env.BASE_URL ?? "rajeevpuri.com.np";
+
+// ─── ASCII Banner ─────────────────────────────────────────────────────────────
+
+/** Each row of the banner as [color, text] pairs so colours are data, not duplication. */
+const BANNER_ROWS: Array<[Color, string]> = [
+  [
+    "YELLOW",
+    "███████╗  ███████╗            ██╗  ███████╗  ███████╗  ███████╗  ██╗   ██╗",
+  ],
+  [
+    "YELLOW",
+    "██╔══██╗  ██╔══██╗            ██║  ██╔════╝  ██╔════╝  ██╔════╝  ██║   ██║",
+  ],
+  [
+    "PURPLE",
+    "██████╔╝  ███████║            ██║  █████╗    █████╗    █████╗    ██║   ██║",
+  ],
+  [
+    "PURPLE",
+    "██╔══██╗  ██╔══██║       ██   ██║  ██╔══╝    ██╔══╝    ██╔══╝    ╚██╗ ██╔╝",
+  ],
+  [
+    "CYAN",
+    "██║  ██║  ██║  ██║       ╚█████╔╝  ███████╗  ███████╗  ███████╗   ╚████╔╝",
+  ],
+  [
+    "CYAN",
+    "╚═╝  ╚═╝  ╚═╝  ╚═╝        ╚════╝   ╚══════╝  ╚══════╝  ╚══════╝    ╚═══╝",
+  ],
+];
+
+// ─── Components ──────────────────────────────────────────────────────────────
+
+/** Horizontal rule. */
+export function Separator(width = 100): string {
+  return `  ${colors.DARK_GRAY}${"─".repeat(width)}${colors.RESET}`;
 }
 
 export function Header(title: string, number: string, desc: string): string {
-  const boxWidth = 100;
-  const border = "═".repeat(boxWidth);
+  const BOX_WIDTH = 100;
+  const border = "═".repeat(BOX_WIDTH);
+  const bb = colors.BRIGHT_BLUE;
+  const R = colors.RESET;
 
-  // ASCII art lines
-  const line1 = `${colors.YELLOW}███████╗  ███████╗            ██╗  ███████╗  ███████╗  ███████╗  ██╗   ██╗${colors.RESET}`;
-  const line2 = `${colors.YELLOW}██╔══██╗  ██╔══██╗            ██║  ██╔════╝  ██╔════╝  ██╔════╝  ██║   ██║${colors.RESET}`;
-  const line3 = `${colors.PURPLE}██████╔╝  ███████║            ██║  █████╗    █████╗    █████╗    ██║   ██║${colors.RESET}`;
-  const line4 = `${colors.PURPLE}██╔══██╗  ██╔══██║       ██   ██║  ██╔══╝    ██╔══╝    ██╔══╝    ╚██╗ ██╔╝${colors.RESET}`;
-  const line5 = `${colors.CYAN}██║  ██║  ██║  ██║       ╚█████╔╝  ███████╗  ███████╗  ███████╗   ╚████╔╝${colors.RESET}`;
-  const line6 = `${colors.CYAN}╚═╝  ╚═╝  ╚═╝  ╚═╝        ╚════╝   ╚══════╝  ╚══════╝  ╚══════╝    ╚═══╝${colors.RESET}`;
+  /** Wraps a line in box borders, centred within BOX_WIDTH. */
+  const boxLine = (line: string): string =>
+    `  ${bb}║${R}${centerInWidth(line, BOX_WIDTH)}${bb}║${R}`;
 
-  const tagline = `${colors.CYAN}IBM Z Student Ambassador | Software Engineer | Linux Enthusiast${colors.RESET}`;
-  const links = `${colors.CYAN}rajeevpuri.com.np${colors.RESET} ${colors.PURPLE}|${colors.RESET} ${colors.CYAN}github.com/razeevascx${colors.RESET}`;
-  const source = `${colors.CYAN}Source:${colors.RESET} ${colors.CYAN}github.com/razeevascx/portfolio${colors.RESET}`;
+  const emptyRow = `  ${bb}║${R}${" ".repeat(BOX_WIDTH)}${bb}║${R}`;
+  const divider = Separator();
 
-  // Center any line within the box
-  const centerLine = (line: string): string => {
-    const visibleLength = getVisibleLength(line);
-    const padding = Math.max(0, Math.floor((boxWidth - visibleLength) / 2));
-    const rightPadding = Math.max(0, boxWidth - visibleLength - padding);
-    return `${colors.BRIGHT_BLUE}║${colors.RESET}${" ".repeat(
-      padding,
-    )}${line}${" ".repeat(rightPadding)}${colors.BRIGHT_BLUE}║${colors.RESET}`;
-  };
+  const bannerLines = BANNER_ROWS.map(([color, text]) =>
+    boxLine(paint(color, text)),
+  ).join("\n");
 
-  const divider = `${colors.DARK_GRAY}${"─".repeat(boxWidth)}${colors.RESET}`;
+  const tagline = paint(
+    "CYAN",
+    "IBM Z Student Ambassador | Software Engineer | Linux Enthusiast",
+  );
+  const links = `${paint("CYAN", "rajeevpuri.com.np")} ${paint("PURPLE", "|")} ${paint("CYAN", "github.com/razeevascx")}`;
+  const source = `${paint("CYAN", "Source:")} ${paint("CYAN", "github.com/razeevascx/portfolio")}`;
 
-  const Title = `${colors.ORANGE}${number}${colors.RESET} ${colors.DARK_GRAY}❯${
-    colors.RESET
-  } ${colors.BOLD}${colors.WHITE}${title.toUpperCase()}${colors.RESET} ${
-    colors.DARK_GRAY
-  }:${colors.RESET} ${colors.GRAY}${desc}${colors.RESET}`;
+  const sectionTitle =
+    `${paint("ORANGE", number)} ${paint("DARK_GRAY", "❯")} ` +
+    `${colors.BOLD}${paint("WHITE", title.toUpperCase())}${colors.BOLD} ` +
+    `${paint("DARK_GRAY", ":")} ${paint("GRAY", desc)}`;
 
-  const asciiArt = `
-  ${colors.BRIGHT_BLUE}╔${border}╗${colors.RESET}
-  ${colors.BRIGHT_BLUE}║${" ".repeat(boxWidth)}║${colors.RESET}
-  ${centerLine(line1)}
-  ${centerLine(line2)}
-  ${centerLine(line3)}
-  ${centerLine(line4)}
-  ${centerLine(line5)}
-  ${centerLine(line6)}
-  ${colors.BRIGHT_BLUE}║${" ".repeat(boxWidth)}║${colors.RESET}
-  ${centerLine(tagline)}
-  ${colors.BRIGHT_BLUE}║${" ".repeat(boxWidth)}║${colors.RESET}
-  ${centerLine(links)}
-  ${colors.BRIGHT_BLUE}║${" ".repeat(boxWidth)}║${colors.RESET}
-  ${centerLine(source)}
-  ${colors.BRIGHT_BLUE}║${" ".repeat(boxWidth)}║${colors.RESET}
-  ${colors.BRIGHT_BLUE}╚${border}╝${colors.RESET}
-
-  ${divider}
-    ${Title}
-  ${divider}
-`;
-  return asciiArt;
+  return [
+    "",
+    `  ${bb}╔${border}╗${R}`,
+    emptyRow,
+    bannerLines,
+    emptyRow,
+    boxLine(tagline),
+    emptyRow,
+    boxLine(links),
+    emptyRow,
+    boxLine(source),
+    emptyRow,
+    `  ${bb}╚${border}╝${R}`,
+    "",
+    divider,
+    `    ${sectionTitle}`,
+    divider,
+    "",
+  ].join("\n");
 }
 
-export function Separator(): string {
-  return `  ${colors.DARK_GRAY}${"─".repeat(100)}${colors.RESET}`;
+/**
+ * A bordered box wrapping multi-line content.
+ *
+ * @param content Text to display (may include ANSI codes).
+ * @param width   Total character width of the box including borders.
+ */
+export function Box(content: string, width = 70): string {
+  const INNER = width - 4; // 2 borders + 2 padding spaces
+  const lc = colors.LIGHT_CYAN;
+  const R = colors.RESET;
+
+  const top = `${lc}╔${"═".repeat(width - 2)}╗${R}`;
+  const bottom = `${lc}╚${"═".repeat(width - 2)}╝${R}`;
+
+  const rows = content.split("\n").map((line) => {
+    const pad = Math.max(0, INNER - visibleLength(line));
+    return `${lc}║${R} ${line}${" ".repeat(pad)} ${lc}║${R}`;
+  });
+
+  return [top, ...rows, bottom].join("\n");
 }
+
+/**
+ * Word-wraps plain or ANSI-coloured text to a given width.
+ *
+ * Note: wrapping is calculated on visible (stripped) length, so ANSI codes
+ * do not throw off the column count.
+ *
+ * @param text   The text to wrap (ANSI codes allowed but not counted).
+ * @param width  Maximum visible characters per line.
+ * @param indent String prepended to every line (e.g. "    " for indentation).
+ */
+export function wrapText(text: string, width: number, indent = ""): string {
+  const effectiveWidth = Math.max(10, width - visibleLength(indent));
+  const words = text.split(" ");
+  const lines: string[] = [];
+  let current = "";
+  let currentLen = 0;
+
+  for (const word of words) {
+    const wordLen = visibleLength(word);
+    const spacer = current ? 1 : 0;
+
+    if (currentLen + spacer + wordLen > effectiveWidth && current) {
+      lines.push(current);
+      current = word;
+      currentLen = wordLen;
+    } else {
+      current += (current ? " " : "") + word;
+      currentLen += spacer + wordLen;
+    }
+  }
+
+  if (current) lines.push(current);
+  return lines.map((l) => indent + l).join("\n");
+}
+
+// ─── Request Detection ────────────────────────────────────────────────────────
+
+const LLM_AGENTS = [
+  "gptbot",
+  "chatgpt-user",
+  "claudebot",
+  "googlebot",
+  "bingbot",
+  "anthropic-ai",
+  "claude-web",
+  "perplexitybot",
+  "youbot",
+] as const;
 
 export function isCurlRequest(userAgent: string | null | undefined): boolean {
-  const agent = String(userAgent || "");
-  return agent.toLowerCase().includes("curl");
+  return String(userAgent ?? "")
+    .toLowerCase()
+    .includes("curl");
 }
 
 export function isLLMRequest(userAgent: string | null | undefined): boolean {
-  const agent = String(userAgent || "").toLowerCase();
-  const llmAgents = [
-    "gptbot",
-    "chatgpt-user",
-    "claudebot",
-    "googlebot",
-    "bingbot",
-    "anthropic-ai",
-    "claude-web",
-    "perplexitybot",
-    "youbot",
-  ];
-  return llmAgents.some((bot) => agent.includes(bot));
+  const agent = String(userAgent ?? "").toLowerCase();
+  return LLM_AGENTS.some((bot) => agent.includes(bot));
 }
+
+// ─── Response Helpers ─────────────────────────────────────────────────────────
 
 export function CurlResponse(content: string): Response {
   return new Response(content, {
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-    },
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
   });
 }
 
-export function Legend(baseUrl: string = url): string {
-  return `  ${colors.CYAN}Legend${colors.RESET}
-
-    ${colors.YELLOW}$${colors.RESET} curl ${baseUrl}/llms.txt          Full site summary (AI Optimized)
-    ${colors.YELLOW}$${colors.RESET} curl ${baseUrl}/about/llms.txt    Get about information
-    ${colors.YELLOW}$${colors.RESET} curl ${baseUrl}/projects/llms.txt Get the list of projects
-    ${colors.YELLOW}$${colors.RESET} curl ${baseUrl}/services/llms.txt Get available services
-    ${colors.YELLOW}$${colors.RESET} curl ${baseUrl}/contact/llms.txt  Get contact information`;
-}
-
-export function Box(content: string, width: number = 70): string {
-  const top = `${colors.LIGHT_CYAN}╔${"═".repeat(width - 2)}╗${colors.RESET}`;
-  const bottom = `${colors.LIGHT_CYAN}╚${"═".repeat(width - 2)}╝${colors.RESET}`;
-  const lines = content.split("\n");
-
-  const boxedLines = lines.map((line) => {
-    const visibleLength = getVisibleLength(line);
-    const padding = Math.max(0, width - 4 - visibleLength);
-    return `${colors.LIGHT_CYAN}║${colors.RESET} ${line}${" ".repeat(
-      padding,
-    )} ${colors.LIGHT_CYAN}║${colors.RESET}`;
-  });
-
-  return `${top}\n${boxedLines.join("\n")}\n${bottom}`;
-}
-
-export function wrapText(text: string, width: number, indent = ""): string {
-  const words = text.split(" ");
-  const effectiveWidth = Math.max(10, width - indent.length);
-  let lines: string[] = [];
-  let currentLine = "";
-
-  words.forEach((word) => {
-    const visibleLength = getVisibleLength(word);
-    const currentVisibleLength = getVisibleLength(currentLine);
-
-    const spacer = currentLine ? 1 : 0;
-    if (currentVisibleLength + spacer + visibleLength > effectiveWidth) {
-      if (currentLine) lines.push(currentLine.trim());
-      currentLine = word;
-    } else {
-      currentLine += (currentLine ? " " : "") + word;
-    }
-  });
-
-  if (currentLine) lines.push(currentLine.trim());
-  return indent + lines.join("\n" + indent);
+export function Legend(baseUrl: string = DEFAULT_URL): string {
+  const $ = `  ${paint("YELLOW", "$")} curl`;
+  return [
+    `  ${paint("CYAN", "Legend")}`,
+    "",
+    `${$} ${baseUrl}            Full site summary (AI Optimized)`,
+    `${$} ${baseUrl}/about      Get about information`,
+    `${$} ${baseUrl}/projects   Get the list of projects`,
+    `${$} ${baseUrl}/services   Get available services`,
+    `${$} ${baseUrl}/contact    Get contact information`,
+  ].join("\n");
 }
