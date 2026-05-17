@@ -20,14 +20,16 @@ function Footer() {
    },
  ];
   return (
-    <footer className="mt-10 border-t border-gray-800">
+    <footer className="mt-20 border-t border-zinc-900  selection:bg-blue-600 selection:text-white overflow-hidden">
+      <div className="h-0.5 bg-linear-to-r from-transparent via-accent-purple/35 to-transparent w-full" />
+
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12  border-b border-zinc-900">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="p-8  space-y-4 border-b md:border-b-0 md:border-r border-zinc-900 "
           >
             <h3 className="text-white text-xl font-semibold">Rajeev Puri</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -41,7 +43,7 @@ function Footer() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4"
+            className="p-8  space-y-4 border-b md:border-b-0 md:border-r border-zinc-900 "
           >
             <h3 className="text-white text-xl font-semibold">Quick Links</h3>
             <nav className="grid grid-cols-2 ">
@@ -62,7 +64,7 @@ function Footer() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-4"
+            className="space-y-4 p-4 md:p-10"
           >
             <h3 className="text-white text-xl font-semibold">Get in Touch</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -79,13 +81,12 @@ function Footer() {
           </motion.div>
         </div>
 
-        <div className="border-t border-gray-800 px-6 py-8">
+        <div className="border-t border-zinc-900 px-6 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <Socialicons />
             <Suspense>
               <p className="text-gray-400 text-sm">
-                &copy; {currentYear} Rajeev Puri. All rights
-                reserved.
+                &copy; {currentYear} Rajeev Puri. All rights reserved.
               </p>
             </Suspense>
             <motion.a
@@ -113,7 +114,7 @@ function ShipItCTA() {
         className="relative z-10 text-center px-6"
       >
         <h2
-          className="text-5xl md:text-[10rem] font-black tracking-wider leading-none select-none  transition-all duration-700"
+          className="text-8xl md:text-[11rem] font-black tracking-wider leading-none select-none  transition-all duration-700"
           style={{
             WebkitTextStroke: "1px rgba(255,255,255,0.1)",
           }}
@@ -122,14 +123,16 @@ function ShipItCTA() {
           <span className="text-transparent group-hover:text-white transition-colors duration-500 ease-in-out">
             SAY IT.
           </span>
+          <br />
 
           {/* SHARE IT - Outline to Zinc */}
           <span className="text-transparent group-hover:text-zinc-800 transition-colors duration-500 ease-in-out delay-75">
             SHARE IT.
           </span>
+          <br />
 
           {/* SHIP IT - Outline to Blue Italic */}
-          <span className="text-transparent group-hover:text-blue-600 italic transition-colors duration-500 ease-in-out delay-150 group-hover:drop-shadow-[0_0_30px_rgba(37,99,235,0.3)]">
+          <span className="text-transparent group-hover:text-blue-600 i transition-colors duration-500 ease-in-out delay-150 group-hover:drop-shadow-[0_0_30px_rgba(37,99,235,0.3)]">
             SHIP IT.
           </span>
         </h2>

@@ -8,6 +8,7 @@ import { ArrowRight, Zap, Shield, Sparkles } from "lucide-react";
 import Service from "@/components/sections/Service";
 import { libraries } from "@/lib/skills-data";
 import SectionBlock from "@/components/SectionBlock";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Services | Rajeev Puri",
@@ -20,10 +21,9 @@ export default function page() {
       <Service />
 
       <Container className="px-5">
-        <SectionBlock
-          title="How I work ?"
-          description="get to know about my working style"
-        />
+        <SectionHeading className="text-3xl font-bold text-white">
+          How I work ?{" "}
+        </SectionHeading>
         <div className="grid grid-cols-1 md:grid-cols-2 flex-1">
           {processSteps.map((item) => (
             <ProcessCard
@@ -36,21 +36,17 @@ export default function page() {
             />
           ))}
         </div>
-      </Container>
 
-      <Container className="px-5 mt-10">
-        <SectionBlock
-          title="Tools of the Trade"
-          description="Technologies and libraries I work with"
-        />
+
+        <SectionHeading className="text-3xl font-bold text-white m-10">
+          Tools of the Trade
+        </SectionHeading>
         <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-4">
           {libraries.map((skill) => (
             <SkillCard1 key={skill.label} skill={skill} />
           ))}
         </div>
       </Container>
-
-
     </>
   );
 }

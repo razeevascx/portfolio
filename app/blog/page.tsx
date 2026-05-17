@@ -21,14 +21,14 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: any = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.215, 0.61, 0.355, 1] as const,
+      ease: "easeOut",
     },
   },
 };
@@ -72,7 +72,7 @@ export default async function BlogPage() {
         >
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-1 gap-6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
             {posts.map((post, index) => (
               <motion.div key={post.id} variants={itemVariants}>

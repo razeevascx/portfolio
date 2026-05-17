@@ -92,7 +92,7 @@ export default async function Page() {
 
               <p className="text-foreground-secondary text-lg leading-relaxed mb-10 max-w-xl font-light">
                 As a Software Engineer dedicated to high-performance builds, I
-                believe great digital products aren't just written in
+                believe great digital products aren&apos;t just written in
                 code—they’re fueled by a user-centric design philosophy and a
                 curious approach to solving complex problems.
               </p>

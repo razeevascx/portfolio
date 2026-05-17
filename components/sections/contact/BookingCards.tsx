@@ -3,7 +3,7 @@
 import * as motion from "motion/react-client";
 import { Clock, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
-import SectionHeading from "../ui/SectionHeading";
+import SectionHeading from "../../ui/SectionHeading";
 import { getCalApi } from "@calcom/embed-react";
 
 interface CalBookerProps {
@@ -43,7 +43,7 @@ export default function BookingCards({ duration = "30min" }: Readonly<CalBookerP
 
   return (
     <>
-      <SectionHeading className="text-3xl font-bold text-white">
+      <SectionHeading className="text-3xl font-bold text-white mt-10">
         Schedule Your Project Call{" "}
       </SectionHeading>
       <p className="text-zinc-400 text-base max-w-2xl ">
@@ -60,7 +60,7 @@ export default function BookingCards({ duration = "30min" }: Readonly<CalBookerP
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: idx * 0.2 }}
             viewport={{ once: true }}
-            className={`relative group p-8 transition-all duration-300 overflow-hidden border border-zinc-800  cursor-pointer  hover:border-zinc-700 hover:bg-zinc-800`}
+            className={`relative group p-8 transition-all duration-300 overflow-hidden border border-zinc-800  cursor-pointer  hover:border-primary`}
           >
             {/* Content */}
             <div className="relative z-10 space-y-6">

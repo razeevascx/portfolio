@@ -29,9 +29,9 @@ function Contact() {
           des="Let’s bring your vision to life. Whether you're looking for UI/UX design or scalable web engineering, I’m here to help. Reach out through any of these channels to start our conversation."
         />
         <div className="relative">
-          <div className="border-dashed border-2  p-6 font-mono text-sm  border-slate-700/50   hover:border-blue-400/50 transition-all duration-300 group">
+          <div className="border-dashed border-2  p-6 font-mono text-sm  border-slate-700/50   hover:border-primary transition-all duration-300 group">
             <span className="text-slate-400 ">{`// Contact Information`}</span>
-            <pre className="text-blue-400 justify-normal text-lg font-serif font-bold tracking-wider whitespace-pre-wrap wrap-break-word">
+            <pre className="text-primary justify-normal text-lg font-serif font-bold tracking-wider whitespace-pre-wrap wrap-break-word">
               <code>{emailCode}</code>
             </pre>
           </div>
@@ -39,17 +39,24 @@ function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2  mt-8">
             <motion.a
               href={`mailto:${email}`}
-              className="flex items-center gap-4 p-6  border border-slate-600/50 hover:border-blue-400/50 transition-all duration-300 group "
+              className={`flex flex-col justify-between p-6 md:p-8 border border-zinc-900 hover:border-primary transition-all duration-300 rounded-none group shadow-[0_0_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_30px_rgba(40,131,255,0.03)] select-none cursor-pointer `}
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-slate-700/50 bg-slate-800/50 group-hover:bg-slate-900/50 transition-colors">
-                <Mail className="text-2xl text-blue-400" />
-              </div>
-              <div>
-                <div className="font-medium text-lg text-slate-200">
-                  Send Email
+              <div className="flex items-center gap-5">
+                <div className="size-10 flex items-center justify-center border border-zinc-900 group-hover:border-primary  transition-all duration-300 shrink-0">
+                  <div className="text-white group-hover:text-primary transition-colors">
+                    <Mail className="text-2xl " />
+                  </div>
                 </div>
-                <div className="text-sm text-slate-400">{email}</div>
+                <div>
+                  <div className="font-bold text-lg text-zinc-100 group-hover:text-primary tracking-wide transition-colors flex items-center gap-2">
+                    <span> Send Email</span>
+                  </div>
+                  <div className="text-xs text-zinc-500 font-sans mt-0.5">
+                    {email}
+                  </div>
+                </div>
               </div>
+
             </motion.a>
             {socialLinks
               .filter((link) => link.name !== "Mail")
@@ -59,17 +66,21 @@ function Contact() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-4 p-6  border border-slate-600/50 hover:border-blue-400/50 transition-all duration-300 group  ${link.hoverColor}`}
+                  className={`flex flex-col justify-between p-6 md:p-8 border border-zinc-900 hover:border-primary transition-all duration-300 rounded-none group shadow-[0_0_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_30px_rgba(40,131,255,0.03)] select-none cursor-pointer ${link.hoverColor}`}
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center border border-slate-700/50 bg-slate-800/50 group-hover:bg-slate-900/50 transition-colors">
-                    {link.icon}
-                  </div>
-                  <div>
-                    <div className="font-medium text-lg text-slate-200">
-                      {link.name}
+                  <div className="flex items-center gap-5">
+                    <div className="size-10 flex items-center justify-center border border-zinc-900 group-hover:border-primary  transition-all duration-300 shrink-0">
+                      <div className="text-white group-hover:text-primary transition-colors">
+                        {link.icon}
+                      </div>
                     </div>
-                    <div className="text-sm text-slate-400">
-                      {link.description}
+                    <div>
+                      <div className="font-bold text-lg text-zinc-100 group-hover:text-primary tracking-wide transition-colors flex items-center gap-2">
+                        <span>{link.name}</span>
+                      </div>
+                      <div className="text-xs text-zinc-500 font-sans mt-0.5">
+                        {link.description}
+                      </div>
                     </div>
                   </div>
                 </motion.a>

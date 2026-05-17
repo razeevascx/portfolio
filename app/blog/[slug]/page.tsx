@@ -71,14 +71,14 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: any = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.215, 0.61, 0.355, 1],
+      ease: "easeOut",
     },
   },
 };
@@ -92,6 +92,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
   }
 
   const markdown = await getBlogPostMarkdown(post.id);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const components = useMDXComponents();
 
   const ld = {
@@ -129,7 +130,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
       <article>
         <header className="mb-12">
           {post.image && (
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="relative w-full h-96 mb-8 rounded-lg overflow-hidden"
             >
@@ -143,13 +144,13 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
               />
             </motion.div>
           )}
-          <motion.h1 
+          <motion.h1
             variants={itemVariants}
             className="font-semibold text-foreground text-4xl md:text-5xl lg:text-6xl leading-[0.95]"
           >
             {post.title}
           </motion.h1>
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="meta-label text-foreground-muted flex items-center gap-4 mt-6"
           >
@@ -163,7 +164,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
           </motion.div>
         </header>
 
-        <motion.div 
+        <motion.div
           variants={itemVariants}
           className="mt-10 pt-10 border-t border-border text-foreground-secondary leading-relaxed font-light"
         >

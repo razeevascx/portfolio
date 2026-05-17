@@ -1,7 +1,8 @@
 import Contact from "@/components/sections/Contact";
-import BookingCards from "@/components/sections/BookingCards";
+import BookingCards from "@/components/sections/contact/BookingCards";
 import Container from "@/components/Container";
 import { Metadata } from "next";
+import TimeZone from "@/components/sections/contact/TimeZone";
 
 export const metadata: Metadata = {
   title: "Contact | Rajeev Puri",
@@ -15,7 +16,8 @@ export default function page() {
       <Contact />
 
       {/* Booking Cards Section */}
-      <Container className="p-5 py-20">
+      <Container className="p-5 ">
+        <TimeZone/>
         <BookingCards />
       </Container>
 

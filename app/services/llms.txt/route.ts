@@ -16,9 +16,14 @@ export async function GET(request: NextRequest) {
   if (!isCurl) {
     const mdContent = `# Services
 
-${services.map(s => `## ${s.title}
-${s.description}
-- **Technologies**: ${s.technologies.join(", ")}`).join("\n\n")}
+${services
+      .map(
+        (s) =>
+          `## ${s.title}
+${Array.isArray(s.description) ? s.description.join("\n") : s.description}
+- **Technologies**: ${s.technologies.join(", ")}`
+      )
+      .join("\n\n")}
 
 ## Legend
 - Home: curl rajeevpuri.com.np/llms.txt
@@ -33,7 +38,11 @@ ${s.description}
   // Services section with enhanced styling
   const servicesContent = services
     .map((service) => {
-      const wrappedDescription = wrapText(service.description, 95, "     ");
+      const descriptionText = Array.isArray(service.description)
+        ? service.description.join(" ")
+        : service.description;
+
+      const wrappedDescription = wrapText(descriptionText, 95, "     ");
 
       const techBadges = service.technologies
         .map((tech) => `${colors.CYAN}${tech}${colors.RESET}`)

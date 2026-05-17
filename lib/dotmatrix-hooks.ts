@@ -40,7 +40,8 @@ export function useCyclePhase({
 
   useEffect(() => {
     if (!active) {
-      setPhase(0);
+      // avoid synchronous setState in effect body
+      requestAnimationFrame(() => setPhase(0));
       return;
     }
 
@@ -128,7 +129,8 @@ export function useSteppedCycle({
     if (!active) {
       activeRef.current = false;
       currentStepRef.current = idleStep;
-      setStep(idleStep);
+      // avoid synchronous setState in effect body
+      requestAnimationFrame(() => setStep(idleStep));
       return;
     }
 

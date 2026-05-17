@@ -74,6 +74,17 @@ export interface Service {
   technologies: string[];
 }
 
+export interface Project {
+  title: string;
+  description: string;
+  link: string;
+  liveLink?: string;
+  tech: Record<string, { id: string; icon: React.ReactNode | null }>;
+  featured?: boolean;
+  stars?: number;
+  forks?: number;
+}
+
 export const quicklink: QuickLink[] = [
   {
     id: "services",
@@ -106,8 +117,8 @@ export const quicklink: QuickLink[] = [
 
 export const socialLinks: SocialLink[] = [
   {
-    name: "Twitter",
-    url: "https://twitter.com/razeev_asnx",
+    name: "X (Formarly Twitter)",
+    url: "https://x.com/razeev_asnx",
     icon: <XDark className="w-6 h-6" />,
     hoverColor: "hover:text-white",
     bgColor: "bg-white/10",
