@@ -80,7 +80,7 @@ export function BlogCode({
       </div>
 
       <div className="relative overflow-hidden bg-background">
-        <pre className="text-[13px] md:text-sm font-mono leading-relaxed py-6 transition-opacity duration-slow">
+        <div className="text-[13px] md:text-sm font-mono leading-relaxed py-6 transition-opacity duration-slow">
           {showLineNumbers ? (
             <table className="w-full">
               <tbody>
@@ -109,7 +109,7 @@ export function BlogCode({
               }}
             />
           )}
-        </pre>
+        </div>
 
 
         <div

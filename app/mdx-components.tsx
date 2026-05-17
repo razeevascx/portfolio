@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { Children, isValidElement } from "react";
 import {
   BlogHeading,
   BlogBody,
@@ -104,19 +105,36 @@ export const components = {
 
   // Tables
   table: ({ children }: any) => (
-    <div className="overflow-x-auto my-8 border border-border rounded-base">
-      <table className="w-full border-collapse">{children}</table>
+    <div className="my-8 overflow-x-auto rounded-none border border-zinc-800 bg-zinc-950/60 shadow-sm backdrop-blur-sm">
+      <table className="w-full min-w-[640px] border-collapse text-sm">
+        {Children.toArray(children).some((child) => {
+          if (!isValidElement(child)) {
+            return false;
+          }
+
+          return (
+            child.type === "thead" ||
+            child.type === "tbody" ||
+            child.type === "tfoot"
+          );
+        }) ? (
+          children
+        ) : (
+          <tbody>{children}</tbody>
+        )}
+      </table>
     </div>
   ),
   th: ({ children }: any) => (
-    <th className="border border-border bg-muted/30 px-4 py-3 text-left text-foreground tracking-widest text-[10px] font-bold">
+    <th className="border-b border-zinc-800 bg-zinc-900/40 px-4 py-3 text-left text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-300">
       {children}
     </th>
   ),
   td: ({ children }: any) => (
-    <td className="border border-border px-4 py-3 text-foreground-secondary font-light">
+    <td className="border-b border-zinc-800 px-4 py-4 align-top text-zinc-400 font-light leading-6">
       {children}
     </td>
+
   ),
 } satisfies MDXComponents;
 

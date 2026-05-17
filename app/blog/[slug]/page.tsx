@@ -83,6 +83,19 @@ const itemVariants: any = {
   },
 };
 
+function normalizeRawTables(markdown: string): string {
+  return markdown.replace(
+    /<table([^>]*)>([\s\S]*?)<\/table>/g,
+    (fullMatch, tableAttributes, tableContent) => {
+      if (/<tbody|<thead|<tfoot/i.test(tableContent)) {
+        return fullMatch;
+      }
+
+      return `<table${tableAttributes}><tbody>${tableContent}</tbody></table>`;
+    },
+  );
+}
+
 export default async function BlogPostPage(props: BlogPostPageProps) {
   const params = await props.params;
   const post = await getBlogPostBySlug(params.slug);
@@ -91,7 +104,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     notFound();
   }
 
-  const markdown = await getBlogPostMarkdown(post.id);
+  const markdown = normalizeRawTables(await getBlogPostMarkdown(post.id));
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const components = useMDXComponents();
 
@@ -166,7 +179,7 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
 
         <motion.div
           variants={itemVariants}
-          className="mt-10 pt-10 border-t border-border text-foreground-secondary leading-relaxed font-light"
+          className="blog-content mt-10 pt-10 border-t border-border text-foreground-secondary leading-relaxed font-light"
         >
           {markdown && <MDXRemote source={markdown} components={components} />}
         </motion.div>
