@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     const welcomeTitle = `${colors.BRIGHT_CYAN}${colors.BOLD}Welcome to my portfolio${colors.RESET}`;
 
     const aboutText = wrapText(
-      `Hey there. I'm Rajeev Puri. Currently a BSc Student and a software engineer. I'll guide your creativity with calm, immersive products that blend reflection, sound, and visual prompts so ideas feel natural again.`,
+      `Hey there. I'm Rajeev Puri, a Software Engineer based in London, UK. I specialize in building high-performance, immersive digital products that blend reflection, sound, and visual storytelling to make technology feel natural and intuitive.`,
       100,
       "  ",
     );
@@ -28,8 +28,9 @@ export async function GET(request: NextRequest) {
   ${colors.GOLD}${colors.BOLD} Core Skills${colors.RESET}
 
   ${colors.BRIGHT_CYAN}▸${colors.RESET} ${colors.WHITE}Languages${colors.RESET}      ${colors.DIM}${language.map(l => l.label).join(", ")}${colors.RESET}
-  ${colors.BRIGHT_CYAN}▸${colors.RESET} ${colors.WHITE}Libraries/Tech${colors.RESET} ${colors.DIM}${libraries.slice(0, 8).map(l => l.label).join(", ")}...${colors.RESET}
-  ${colors.BRIGHT_CYAN}▸${colors.RESET} ${colors.WHITE}Systems${colors.RESET}        ${colors.DIM}IBM Z, Mainframe Technologies, Linux, Docker${colors.RESET}`;
+  ${colors.BRIGHT_CYAN}▸${colors.RESET} ${colors.WHITE}Libraries/Tech${colors.RESET} ${colors.DIM}${libraries.map(l => l.label).join(", ")}${colors.RESET}
+  ${colors.BRIGHT_CYAN}▸${colors.RESET} ${colors.WHITE}Systems/Cloud${colors.RESET}  ${colors.DIM}AWS, Vercel, IBM Z (Mainframe), Linux, Docker, Kubernetes${colors.RESET}
+  ${colors.BRIGHT_CYAN}▸${colors.RESET} ${colors.WHITE}Design${colors.RESET}         ${colors.DIM}Figma, UI/UX, Design Systems, Framer Motion${colors.RESET}`;
 
     const content = `${Header("HOME", "01", " Introduction")}
   ${welcomeTitle}
@@ -43,11 +44,11 @@ ${Legend()}
   }
 
   const sections = [
-    `# Rajeev Puri - Portfolio`,
-    `> Software Engineer specializing in full-stack web development, UI/UX design, and system architecture. Building innovative web experiences with Next.js, React, and TypeScript.`,
+    `# Rajeev Puri - Software Engineer`,
+    `> Based in London, UK. Specializing in Next.js, React, and Scalable System Architecture. Building high-performance web applications with a focus on user-centric design and secure infrastructure.`,
     
     `## About Me`,
-    `I'm Rajeev Puri, a BSc Student and a software engineer. I focus on creating calm, immersive products that blend reflection, sound, and visual prompts. My core philosophy revolves around performance, user-centric design, and continuous learning.`,
+    `I'm Rajeev Puri, a Software Engineer dedicated to crafting calm, immersive digital experiences. My work blends technical excellence in full-stack development with a deep understanding of UI/UX and brand strategy. My core philosophy revolves around performance, accessibility, and continuous innovation.`,
     
     `## Technical Skills`,
     `### Languages`,

@@ -19,7 +19,10 @@ export default function Logo({
       className={className}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Rajeev Puri Logo"
     >
+      <title>Rajeev Puri Logo</title>
       <g clipPath="url(#clip0_30_98)">
         <path
           d="M24 0H8C3.58172 0 0 3.58172 0 8V24C0 28.4183 3.58172 32 8 32H24C28.4183 32 32 28.4183 32 24V8C32 3.58172 28.4183 0 24 0Z"

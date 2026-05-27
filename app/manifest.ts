@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Rajeev Puri - Software Engineer Portfolio",
     short_name: "Rajeev Puri",
     description:
-      "Software Engineer specializing in full-stack web development, UI/UX design, and system architecture. Building innovative web experiences with Next.js, React, and TypeScript.",
+      "London-based Software Engineer specializing in Next.js, React, and Full-Stack Development. Building high-performance web applications, scalable system architectures, and secure cloud infrastructure.",
     start_url: "/",
     scope: "/",
     display: "standalone",

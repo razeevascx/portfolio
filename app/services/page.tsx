@@ -13,6 +13,9 @@ import SectionHeading from "@/components/ui/SectionHeading";
 export const metadata: Metadata = {
   title: "Services | Rajeev Puri",
   description: "Explore the services offered by Rajeev Puri, including full-stack development, UI/UX design, and specialized web solutions.",
+  alternates: {
+    canonical: "https://rajeevpuri.com.np/services",
+  },
 };
 
 export default function page() {

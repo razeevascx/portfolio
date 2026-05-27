@@ -6,9 +6,15 @@ import Items from "@/components/ui/Items";
 import Container from "@/components/Container";
 import * as motion from "motion/react-client";
 
-export const metadata = {
-  title: "Blog",
-  description: "Thoughts on web development, Next.js, and building great products.",
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | Rajeev Puri",
+  description:
+    "Technical insights and articles on Next.js, React, TypeScript, and software engineering. Sharing knowledge on building scalable web applications and modern digital experiences.",
+  alternates: {
+    canonical: "https://rajeevpuri.com.np/blog",
+  },
 };
 
 const containerVariants = {

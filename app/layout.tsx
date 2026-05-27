@@ -38,38 +38,40 @@ export const metadata: Metadata = {
     template: "%s | Rajeev Puri",
   },
   description:
-    " Software Engineer based in Nepal, specializing in Next.js, React, and PostgreSQL. Building high-performance web applications and scalable system architectures.",
+    "Software Engineer based in London, UK, specializing in Next.js, React, and Full-Stack Development. Building high-performance web applications, scalable system architectures, and secure cloud infrastructure.",
   keywords: [
     // Core Roles
-    "Software Engineer UK",
-    "Full Stack Developer London",
+    "Software Engineer London",
+    "Full Stack Developer UK",
     "Product Engineer",
-    "React Contractor UK",
+    "Next.js Expert",
+    "React Developer",
+    "TypeScript Architect",
 
     // Tech Stack (High Demand)
-    "Next.js Expert",
-    "TypeScript",
     "Node.js",
-    "NestJS",
     "PostgreSQL",
+    "Supabase",
     "AWS Lambda",
     "Docker",
-    "Terraform",
-    "Tailwind CSS",
+    "Python Automation",
+    "Mainframe Technologies",
+    "IBM Z Xplore",
 
     // Methodologies & Concepts
-    "TDD",
-    "Test Driven Development",
-    "CI/CD",
-    "Agile Delivery",
-    "Microservices",
     "System Architecture",
-    "Web Performance Optimisation", // UK Spelling
+    "UI/UX Design",
+    "Database Optimization",
+    "Cloud DevOps",
+    "CI/CD",
+    "Agile Development",
+    "Web Performance Optimization",
 
     // Niche / Emerging
     "AI Integration",
-    "Serverless Architecture",
+    "Passwordless Authentication",
     "Fintech Development",
+    "Scalable SaaS",
   ],
   authors: [{ name: "Rajeev Puri", url: "https://rajeevpuri.com.np" }],
   creator: "Rajeev Puri",
@@ -81,7 +83,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: true,
     googleBot: {
       index: true,
       follow: true,
@@ -92,17 +93,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_GB",
     url: "https://rajeevpuri.com.np",
     title: "Rajeev Puri | Software Engineer",
     description:
-      "Crafting innovative web experiences with Next.js and TypeScript. View my latest projects and technical expertise.",
+      "London-based Software Engineer crafting high-performance digital products with Next.js and TypeScript. View my latest projects in Full-Stack development and System Architecture.",
     images: [
       {
         url: "/opengraph-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Rajeev Puri Portfolio - Software Engineer",
+        alt: "Rajeev Puri Portfolio - Software Engineer in London",
       },
     ],
     siteName: "Rajeev Puri Portfolio",
@@ -111,12 +112,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rajeev Puri | Software Engineer",
     description:
-      "Software Engineer specializing in Next.js, React, and modern web tech.",
+      "Software Engineer specializing in Next.js, React, and modern web tech. Based in London, UK.",
     images: ["/twitter-image.jpg"],
     creator: "@razeev_asnx",
-  },
-  alternates: {
-    canonical: "https://rajeevpuri.com.np",
   },
 };
 
@@ -136,7 +134,7 @@ const jsonLd = {
         addressCountry: "UK",
       },
       description:
-        "Full-stack Software Engineer based in the UK, specializing in Next.js, React, TypeScript, and scalable Cloud Architecture.",
+        "Full-stack Software Engineer based in London, UK, specializing in Next.js, React, TypeScript, and scalable Cloud Architecture. Expert in building high-performance web applications and system design.",
       email: "contact@rajeevpuri.com.np",
       sameAs: [
         "https://github.com/razeevascx",
@@ -151,8 +149,11 @@ const jsonLd = {
         "Full-Stack Web Development",
         "AWS Cloud",
         "PostgreSQL",
-        "Agile Development",
         "System Architecture",
+        "UI/UX Design",
+        "DevOps",
+        "Python Automation",
+        "IBM Z Mainframe",
       ],
     },
     {
@@ -161,7 +162,7 @@ const jsonLd = {
       url: "https://rajeevpuri.com.np",
       name: "Rajeev Puri Portfolio",
       description:
-        "Professional portfolio of Rajeev Puri, a UK-based software engineer.",
+        "Professional portfolio of Rajeev Puri, a London-based software engineer specializing in Next.js and System Architecture.",
       publisher: { "@id": "https://rajeevpuri.com.np/#person" },
     },
   ],

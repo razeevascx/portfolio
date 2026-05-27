@@ -7,6 +7,9 @@ import TimeZone from "@/components/sections/contact/TimeZone";
 export const metadata: Metadata = {
   title: "Contact | Rajeev Puri",
   description: "Get in touch with Rajeev Puri for collaboration, project inquiries, or professional networking.",
+  alternates: {
+    canonical: "https://rajeevpuri.com.np/contact",
+  },
 };
 
 export default function page() {

@@ -22,6 +22,9 @@ import { getCredlyBadges } from "@/lib/credly";
 export const metadata: Metadata = {
   title: "About | Rajeev Puri",
   description: "Learn more about Rajeev Puri, a software engineer with expertise in Next.js, React, and modern web technologies.",
+  alternates: {
+    canonical: "https://rajeevpuri.com.np/about",
+  },
 };
 
 export default async function Page() {
