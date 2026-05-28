@@ -34,11 +34,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://rajeevpuri.com.np"),
   title: {
-    default: "Rajeev Puri | Software Engineer",
+    default: "Rajeev Puri | Software Engineer - Next.js, React & System Architecture",
     template: "%s | Rajeev Puri",
   },
   description:
-    "Software Engineer based in London, UK, specializing in Next.js, React, and Full-Stack Development. Building high-performance web applications, scalable system architectures, and secure cloud infrastructure.",
+    "London-based Software Engineer specializing in Next.js, React, TypeScript, and Full-Stack Development. Expert in high-performance web applications, scalable system architectures, Cloud DevOps, and secure infrastructure. Available for freelance and contract work.",
   keywords: [
     // Core Roles
     "Software Engineer London",
@@ -47,6 +47,8 @@ export const metadata: Metadata = {
     "Next.js Expert",
     "React Developer",
     "TypeScript Architect",
+    "Web Developer London",
+    "Freelance Software Engineer",
 
     // Tech Stack (High Demand)
     "Node.js",
@@ -57,25 +59,29 @@ export const metadata: Metadata = {
     "Python Automation",
     "Mainframe Technologies",
     "IBM Z Xplore",
+    "AWS Cloud",
 
     // Methodologies & Concepts
     "System Architecture",
     "UI/UX Design",
     "Database Optimization",
     "Cloud DevOps",
-    "CI/CD",
+    "CI/CD Pipeline",
     "Agile Development",
     "Web Performance Optimization",
+    "Core Web Vitals",
 
     // Niche / Emerging
     "AI Integration",
     "Passwordless Authentication",
     "Fintech Development",
     "Scalable SaaS",
+    "Serverless Architecture",
   ],
   authors: [{ name: "Rajeev Puri", url: "https://rajeevpuri.com.np" }],
   creator: "Rajeev Puri",
   category: "technology",
+  applicationName: "Rajeev Puri Portfolio",
   icons: {
     icon: "/favicon.ico",
   },
@@ -83,6 +89,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -97,13 +104,14 @@ export const metadata: Metadata = {
     url: "https://rajeevpuri.com.np",
     title: "Rajeev Puri | Software Engineer",
     description:
-      "London-based Software Engineer crafting high-performance digital products with Next.js and TypeScript. View my latest projects in Full-Stack development and System Architecture.",
+      "London-based Software Engineer crafting high-performance digital products with Next.js and TypeScript. Specializing in Full-Stack development, System Architecture, and Cloud Infrastructure.",
     images: [
       {
-        url: "/opengraph-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Rajeev Puri Portfolio - Software Engineer in London",
+        type: "image/png",
       },
     ],
     siteName: "Rajeev Puri Portfolio",
@@ -112,9 +120,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rajeev Puri | Software Engineer",
     description:
-      "Software Engineer specializing in Next.js, React, and modern web tech. Based in London, UK.",
+      "Full-Stack Software Engineer specializing in Next.js, React, TypeScript, and modern web technologies. Based in London, UK.",
     images: ["/twitter-image.jpg"],
     creator: "@razeev_asnx",
+  },
+  verification: {
+    google: "add-your-google-verification-code",
   },
 };
 

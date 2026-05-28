@@ -8,12 +8,45 @@ import * as motion from "motion/react-client";
 
 import { Metadata } from "next";
 
+const title = "Technical Blog | Rajeev Puri";
+const description = "Technical insights and articles on Next.js, React, TypeScript, and software engineering.";
+const ogImage = `/og?route=blog&title=${encodeURIComponent("Technical Blog")}&excerpt=${encodeURIComponent("Thoughts on web development, Next.js, React, and building great digital experiences.")}&tags=${encodeURIComponent("React,TypeScript,Web Development")}`;
+
 export const metadata: Metadata = {
-  title: "Blog | Rajeev Puri",
+  title: "Blog | Rajeev Puri - Next.js, React & Web Development Articles",
   description:
-    "Technical insights and articles on Next.js, React, TypeScript, and software engineering. Sharing knowledge on building scalable web applications and modern digital experiences.",
+    "Technical blog with articles on Next.js, React, TypeScript, system architecture, web performance optimization, and software engineering best practices. Insights on building scalable web applications and modern digital experiences.",
+  keywords: [
+    "Blog",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Web Development",
+    "Software Engineering",
+    "System Architecture",
+    "Web Performance",
+    "Tutorial",
+    "Best Practices",
+  ],
   alternates: {
     canonical: "https://rajeevpuri.com.np/blog",
+  },
+  openGraph: {
+    title,
+    description,
+    url: "https://rajeevpuri.com.np/blog",
+    type: "website",
+    images: {
+      url: ogImage,
+      width: 1200,
+      height: 630,
+      alt: title,
+    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@razeev_asnx",
+    images: [ogImage],
   },
 };
 

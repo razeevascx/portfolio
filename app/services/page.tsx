@@ -10,11 +10,44 @@ import { libraries } from "@/lib/skills-data";
 import SectionBlock from "@/components/SectionBlock";
 import SectionHeading from "@/components/ui/SectionHeading";
 
+const title = "Technical Specializations | Rajeev Puri";
+const description = "Expert software engineering services: Next.js development, system architecture, web performance optimization, and cloud infrastructure.";
+const ogImage = `/og?route=services&title=${encodeURIComponent("Technical Specializations")}&capabilities=${encodeURIComponent("Next.js/React,Rust System Core,Cloud Performance Architecture")}`;
+
 export const metadata: Metadata = {
-  title: "Services | Rajeev Puri",
-  description: "Explore the services offered by Rajeev Puri, including full-stack development, UI/UX design, and specialized web solutions.",
+  title: "Services | Rajeev Puri - Next.js Development, System Architecture & Web Optimization",
+  description: "Professional software engineering services: Next.js & React development, system architecture design, web performance optimization, TypeScript, AWS Cloud, Database Design, CI/CD implementation. Specializing in scalable web applications and high-performance digital products.",
+  keywords: [
+    "Next.js Development",
+    "React Development",
+    "Full Stack Development",
+    "System Architecture",
+    "Web Performance Optimization",
+    "TypeScript Services",
+    "AWS Cloud Services",
+    "Database Design",
+    "CI/CD Pipeline",
+    "Software Consulting",
+  ],
   alternates: {
     canonical: "https://rajeevpuri.com.np/services",
+  },
+  openGraph: {
+    title,
+    description,
+    url: "https://rajeevpuri.com.np/services",
+    type: "website",
+    images: {
+      url: ogImage,
+      width: 1200,
+      height: 630,
+      alt: title,
+    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@razeev_asnx",
+    images: [ogImage],
   },
 };
 

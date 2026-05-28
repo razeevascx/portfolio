@@ -62,7 +62,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="hidden lg:block absolute inset-0 z-0"
+            className=" absolute inset-0 z-0"
           >
             <TopographicCanvas {...param} />
             <div className="absolute inset-0 pointer-events-none bg-linear-to-r from-[#030303] via-[#030303]/80 to-transparent w-full" />
@@ -73,9 +73,9 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-8 md:space-y-12 relative z-10"
+          className="relative z-10"
         >
-          <div className="flex items-center min-h-screen md:min-h-[90dvh] py-12 md:py-0">
+          <div className="flex items-center  h-[90dvh]">
             <div className="w-full max-w-3xl">
               {/* Header Label */}
               <motion.div
@@ -93,7 +93,7 @@ export default function Hero() {
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-medium tracking-tight leading-[0.95] mb-6 md:mb-8"
+                className="text-6xl   md:text-8xl font-medium tracking-tight leading-[0.95] mb-6 md:mb-8"
               >
                 Relearn how to <br />
                 wonder, feel, and{" "}
@@ -110,7 +110,7 @@ export default function Hero() {
                 variants={itemVariants}
                 className="border-l-2 border-white/10 pl-4 md:pl-8 mb-8 md:mb-12"
               >
-                <p className="text-sm md:text-lg lg:text-xl text-zinc-400 font-light max-w-3xl leading-relaxed hover:text-white transition-colors duration-300">
+                <p className="text-md md:text-xl text-zinc-400 font-light max-w-3xl leading-relaxed hover:text-white transition-colors duration-300">
                   Hey there. I&apos;m{" "}
                   <span className="text-white font-bold">Rajeev Puri</span>. I help creatives
                   and brands launch digital products that blend sound,
@@ -133,7 +133,7 @@ export default function Hero() {
 
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col sm:flex-row gap-4 md:gap-6 mb-8 md:mb-12"
+                className="flex  gap-4 md:gap-6 mb-8 md:mb-12"
               >
                 <Link
                   href="/projects"
