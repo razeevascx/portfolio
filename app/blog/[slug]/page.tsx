@@ -24,10 +24,18 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
-  const posts = await getBlogPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const posts = await getBlogPosts();
+    if (!posts || posts.length === 0) {
+      return [{ slug: "placeholder" }];
+    }
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.warn("Blog posts not available during build:", error);
+    return [{ slug: "placeholder" }];
+  }
 }
 
 export async function generateMetadata(props: BlogPostPageProps) {
@@ -40,10 +48,21 @@ export async function generateMetadata(props: BlogPostPageProps) {
 
   const description = post.excerpt || post.content.substring(0, 160);
   const canonical = `https://rajeevpuri.com.np/blog/${post.slug}`;
+  
+  // Generate dynamic OG image URL
+  const ogImageParams = new URLSearchParams({
+    title: post.title,
+    description: description.substring(0, 100),
+    tag: post.tags?.[0] || "Technology",
+  });
+  const ogImage = `https://rajeevpuri.com.np/api/og?${ogImageParams.toString()}`;
 
   return {
-    title: post.title,
+    title: `${post.title} | Blog | Rajeev Puri`,
     description,
+    keywords: post.tags || [],
+    authors: [{ name: "Rajeev Puri", url: "https://rajeevpuri.com.np" }],
+    creator: "Rajeev Puri",
     alternates: { canonical },
     openGraph: {
       title: post.title,
@@ -53,9 +72,21 @@ export async function generateMetadata(props: BlogPostPageProps) {
       publishedTime: post.publishedDate,
       authors: ["Rajeev Puri"],
       tags: post.tags,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
+      title: post.title,
+      description,
+      images: [ogImage],
+      creator: "@razeev_asnx",
     },
   } as any;
 }
@@ -111,12 +142,35 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
   const ld = {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `https://rajeevpuri.com.np/blog/${post.slug}`,
     headline: post.title,
     description: post.excerpt || post.content.substring(0, 160),
     datePublished: post.publishedDate,
-    author: { "@type": "Person", name: "Rajeev Puri" },
+    dateModified: post.publishedDate,
+    image: post.image || "https://rajeevpuri.com.np/opengraph-image.jpg",
+    author: {
+      "@type": "Person",
+      name: "Rajeev Puri",
+      url: "https://rajeevpuri.com.np",
+      sameAs: [
+        "https://github.com/razeevascx",
+        "https://linkedin.com/in/razeevasnx",
+        "https://twitter.com/razeev_asnx",
+      ],
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Rajeev Puri",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://rajeevpuri.com.np/favicon.ico",
+      },
+    },
     mainEntityOfPage: `https://rajeevpuri.com.np/blog/${post.slug}`,
-    keywords: post.tags.join(", ") || undefined,
+    keywords: post.tags?.join(", ") || "software engineering, next.js, react",
+    wordCount: post.content?.length || 0,
+    articleSection: "Technology",
+    inLanguage: "en-GB",
   };
 
   return (

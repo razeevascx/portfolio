@@ -18,12 +18,43 @@ import SkillCard1 from "@/components/cards/SkillCard";
 import CertificateCard from "@/components/cards/CertificateCard";
 import { getCredlyBadges } from "@/lib/credly";
 
+const title = "Biography Specs | Rajeev Puri";
+const description = "Wolverhampton based software architect specializing in zero-latency protocols.";
+const ogImage = `/og?route=about&title=${encodeURIComponent("Biography Specs")}&credentials=${encodeURIComponent(description)}`;
 
 export const metadata: Metadata = {
-  title: "About | Rajeev Puri",
-  description: "Learn more about Rajeev Puri, a software engineer with expertise in Next.js, React, and modern web technologies.",
+  title: "About | Rajeev Puri - Software Engineer in London",
+  description: "Learn about Rajeev Puri, a software engineer based in London specializing in Next.js, React, TypeScript, and full-stack development. Expert in system architecture, web performance optimization, and building scalable SaaS applications.",
+  keywords: [
+    "About",
+    "Software Engineer",
+    "Next.js Expert",
+    "React Developer",
+    "TypeScript",
+    "Full Stack Developer",
+    "System Architecture",
+    "Technical Skills",
+    "Experience",
+  ],
   alternates: {
     canonical: "https://rajeevpuri.com.np/about",
+  },
+  openGraph: {
+    title,
+    description,
+    url: "https://rajeevpuri.com.np/about",
+    type: "website",
+    images: {
+      url: ogImage,
+      width: 1200,
+      height: 630,
+      alt: title,
+    },
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@razeev_asnx",
+    images: [ogImage],
   },
 };
 

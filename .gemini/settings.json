@@ -2,6 +2,18 @@
     "mcpServers": {
         "notion": {
             "url": "https://mcp.notion.com/mcp"
+        },
+            "gsc": {
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "suganthan-gsc-mcp"
+                ],
+                "env": {
+                    "GSC_AUTH_MODE": "oauth",
+                    "GSC_OAUTH_SECRETS_FILE": "/Users/razeev.asnx/codespace/sand/Suganthans-GSC-MCP/env.json",
+                    "GSC_SITE_URL": "sc-domain:rajeevpuri.com.np"
+                }
+            }
         }
-}
 }
