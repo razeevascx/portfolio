@@ -24,6 +24,8 @@ function Footer() {
       <div className="h-0.5 bg-linear-to-r from-transparent via-accent-purple/35 to-transparent w-full" />
 
       <Container>
+        <ShipItCTA />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12  border-b border-zinc-900">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -98,43 +100,27 @@ function Footer() {
             </motion.a>
           </div>
         </div>
-        <ShipItCTA />
       </Container>
+
     </footer>
   );
 }
 
 function ShipItCTA() {
   return (
-    <section className="py-2 group overflow-hidden">
+    <section className="py-2 group overflow-hidden border-b border-zinc-900">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="relative z-10 text-center px-6"
+        className="relative z-10 px-6 text-5xl sm:text-6xl md:text-7xl lg:text-9xl"
       >
-        <h2
-          className="text-8xl md:text-[11rem] font-black tracking-wider leading-none select-none  transition-all duration-700"
-          style={{
-            WebkitTextStroke: "1px rgba(255,255,255,0.1)",
-          }}
-        >
-          {/* SAY IT - Outline to White */}
-          <span className="text-transparent group-hover:text-white transition-colors duration-500 ease-in-out">
-            SAY IT.
-          </span>
-          <br />
+        <h2 className="font-black tracking-wide leading-tight md:leading-none select-none transition-all duration-700 text-center md:text-left">
+          <span className="text-white block md:inline md:mx-2">SAY IT.</span>
 
-          {/* SHARE IT - Outline to Zinc */}
-          <span className="text-transparent group-hover:text-zinc-800 transition-colors duration-500 ease-in-out delay-75">
-            SHARE IT.
-          </span>
-          <br />
+          <span className="text-zinc-800 block md:inline md:mx-2">SHARE IT.</span>
 
-          {/* SHIP IT - Outline to Blue Italic */}
-          <span className="text-transparent group-hover:text-blue-600 i transition-colors duration-500 ease-in-out delay-150 group-hover:drop-shadow-[0_0_30px_rgba(37,99,235,0.3)]">
-            SHIP IT.
-          </span>
+          <span className="text-blue-600 block md:inline md:mx-2">SHIP IT.</span>
         </h2>
       </motion.div>
     </section>

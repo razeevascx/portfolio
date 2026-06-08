@@ -23,20 +23,9 @@ export default function ProfileCard() {
           </div>
 
           <div className="flex flex-col justify-between ">
-            <div className="px-8 py-4 font-mono text-[10px] tracking-widest text-zinc-600  border-b border-white/5 flex items-center justify-between bg-zinc-950/20">
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-zinc-500">
-                <div className="flex items-center gap-2 hover:text-zinc-300 transition-colors">
-                  <MapPin size={16} className="text-blue-500/60" />
-                  <span className="tracking-wide">United Kingdom</span>
-                </div>
-                <div className="flex items-center gap-2 hover:text-zinc-300 transition-colors">
-                  <Calendar size={16} className="text-blue-500/60" />
-                  <span className="tracking-wide">Joined April 2024</span>
-                </div>
-              </div>{" "}
-            </div>
+            {/* meta bar removed per request */}
 
-            <h1 className="text-6xl font-bold px-8 py-4 text-white tracking-tight">
+            <h1 className="text-6xl md:text-8xl font-bold px-8 py-4 text-white tracking-tight">
               Rajeev Puri
             </h1>
 

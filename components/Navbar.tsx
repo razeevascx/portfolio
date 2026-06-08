@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useState,memo } from "react";
 import { quicklink } from "@/lib/constants";
 import Container from "@/components/Container";
-import Logo from "@/components/Logo";
 import MobileMenu from "@/components/MobileMenu";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +19,12 @@ function Navbar() {
         <div className="flex justify-between items-center">
           <motion.div whileTap={{ scale: 1.05 }} className="cursor-pointer">
             <Link href="/" aria-label="Home">
-              <Logo
+              <Image
+              src="/logo.svg"
                 width={50}
                 height={25}
+                alt="logo"
+                loading="eager"
                 className="hover:opacity-80 transition-opacity md:w-15 md:h-7.5"
               />
             </Link>

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://rajeevpuri.com.np"),
   title: {
     default: "Rajeev Puri | Software Engineer",
-    template: "%s | Rajeev Puri",
+    template: "%s ",
   },
   description:
     "Software Engineer based in London, UK, specializing in Next.js, React, and Full-Stack Development. Building high-performance web applications, scalable system architectures, and secure cloud infrastructure.",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   creator: "Rajeev Puri",
   category: "technology",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo.svg",
   },
   manifest: "/manifest.webmanifest",
   robots: {

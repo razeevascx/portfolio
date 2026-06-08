@@ -35,11 +35,7 @@ export default function LocationCard({
       </div>
 
 
-      <div className="text-zinc-400 text-sm leading-relaxed space-y-1 font-sans font-light">
-        {address.map((line, i) => (
-          <p key={i}>{line}</p>
-        ))}
-      </div>
+
 
       {status && (
         <div className="flex items-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest pt-2">
