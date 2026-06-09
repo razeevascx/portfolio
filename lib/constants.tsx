@@ -13,13 +13,10 @@ import {
   Supabase,
   Vue,
   MongoDBDark,
-  XDark,
 } from "@ridemountainpig/svgl-react";
 import {
-  GithubIcon,
   Mail,
-  LinkedinIcon,
-  X,
+
   Code,
   Palette,
   Layout,
@@ -42,6 +39,8 @@ import {
   FullStackIllustration,
   UIUXIllustration,
 } from "@/components/illustration/ServiceIllustrations";
+import { IconXTwitter, IconGithub, IconLinkedin } from "nucleo-social-media";
+
 
 
 interface QuickLink {
@@ -119,7 +118,7 @@ export const socialLinks: SocialLink[] = [
   {
     name: "X (Formarly Twitter)",
     url: "https://x.com/razeev_asnx",
-    icon: <XDark className="w-6 h-6" />,
+    icon: <IconXTwitter className="w-6 h-6" />,
     hoverColor: "hover:text-white",
     bgColor: "bg-white/10",
     description: "Latest updates & thoughts",
@@ -128,7 +127,7 @@ export const socialLinks: SocialLink[] = [
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/razeevasnx",
-    icon: <LinkedinIcon className="w-6 h-6" />,
+    icon: <IconLinkedin className="w-6 h-6" />,
     hoverColor: "hover:text-blue-600",
     bgColor: "bg-blue-600/10",
     description: "Professional network",
@@ -137,7 +136,7 @@ export const socialLinks: SocialLink[] = [
   {
     name: "GitHub",
     url: "https://github.com/razeevascx/",
-    icon: <GithubIcon size={30} />,
+    icon: <IconGithub size={30} />,
     hoverColor: "hover:text-white",
     bgColor: "bg-white/10",
     description: "Check out my projects",
