@@ -76,6 +76,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Rajeev Puri", url: "https://rajeevpuri.com.np" }],
   creator: "Rajeev Puri",
   category: "technology",
+  alternates: {
+    canonical: "https://rajeevpuri.com.np",
+  },
   icons: {
     icon: "/logo.svg",
   },

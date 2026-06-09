@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getBlogPosts } from "@/lib/notion/blog";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://rajeevpuri.com.np/";
+  const baseUrl = "https://rajeevpuri.com.np";
   const now = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = [
@@ -13,30 +13,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
     },
     {
-      url: `${baseUrl}about`,
+      url: `${baseUrl}/about`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}services`,
+      url: `${baseUrl}/services`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}projects`,
+      url: `${baseUrl}/projects`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}contact`,
+      url: `${baseUrl}/contact`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
-
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
   ];
 
   try {
@@ -50,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }
       }
       return {
-        url: `${baseUrl}blog/${p.slug}`,
+        url: `${baseUrl}/blog/${p.slug}`,
         lastModified: lastMod,
         changeFrequency: "monthly",
         priority: 0.7,

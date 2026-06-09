@@ -1,4 +1,4 @@
-import { cacheLife, cacheTag } from 'next/cache'
+import { cacheLife, cacheTag } from "next/cache";
 import { Notionclient } from "@/lib/notion/client";
 
 export interface BlogPost {
@@ -15,7 +15,7 @@ export interface BlogPost {
 }
 
 export async function getBlogPostMarkdown(pageId: string): Promise<string> {
-  'use cache'
+  "use cache";
   try {
     const response: any = await Notionclient.pages.retrieveMarkdown({
       page_id: pageId,
@@ -58,7 +58,6 @@ function getImageUrl(prop?: NotionProperty): string | undefined {
 }
 
 function extractImageFromCover(row: any): string | undefined {
-  // Try to extract image from page cover
   if (row?.cover?.external?.url) return row.cover.external.url;
   if (row?.cover?.file?.url) return row.cover.file.url;
   return undefined;
@@ -68,21 +67,20 @@ function normalizeSlug(s: string | undefined): string {
   if (!s) return "";
   return s
     .toLowerCase()
-    .replace(/\.+/g, "") // remove dots
-    .replace(/[^a-z0-9]+/g, "-") // non-alphanumeric -> hyphen
-    .replace(/^-+|-+$/g, ""); // trim leading/trailing hyphens
+    .replace(/\.+/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
-export async function getBlogPosts(
-  dataSourceId?: string
-): Promise<BlogPost[]> {
-  'use cache'
-  cacheLife('hours')
-  cacheTag('blog-posts')
+export async function getBlogPosts(dataSourceId?: string): Promise<BlogPost[]> {
+  "use cache";
+  cacheLife("hours");
+  cacheTag("blog-posts");
+
   const sourceId =
     dataSourceId ||
     process.env.NOTION_BLOG_DATA_SOURCE_ID ||
-    process.env.NOTION_DATA_SOURCE_ID;
+    "aac5bb60-5924-4ace-8f77-af7f5fd5e715";
 
   if (!sourceId) {
     console.warn("No Notion blog data source ID configured");
@@ -109,10 +107,7 @@ export async function getBlogPosts(
 
     return allResults
       .map((row: any) => {
-        const props = (row?.properties || {}) as Record<
-          string,
-          NotionProperty
-        >;
+        const props = (row?.properties || {}) as Record<string, NotionProperty>;
 
         return {
           id: row.id,
@@ -121,7 +116,8 @@ export async function getBlogPosts(
             normalizeSlug(getPlainText(props.Slug)) ||
             normalizeSlug(getPlainText(props.Title)) ||
             "",
-          content: getPlainText(props.Content) || "",
+          // Use excerpt for list views — full content is fetched per-post
+          content: getPlainText(props.Excerpt) || "",
           excerpt: getPlainText(props.Excerpt) || "",
           publishedDate: props["Published Date"]?.date?.start || "",
           featured: !!props.Featured?.checkbox,
@@ -130,14 +126,15 @@ export async function getBlogPosts(
               ? props["Reading Time"].number
               : 0,
           tags: getTags(props.Tags),
-          image: getImageUrl(props["Files & media"]) || extractImageFromCover(row),
+          image:
+            getImageUrl(props["Files & media"]) || extractImageFromCover(row),
         } as BlogPost;
       })
       .filter((post) => post.title && post.slug)
       .sort(
         (a, b) =>
           new Date(b.publishedDate).getTime() -
-          new Date(a.publishedDate).getTime()
+          new Date(a.publishedDate).getTime(),
       );
   } catch (error) {
     console.error("Failed to load blog posts from Notion:", error);
@@ -147,11 +144,23 @@ export async function getBlogPosts(
 
 export async function getBlogPostBySlug(
   slug: string,
-  dataSourceId?: string
+  dataSourceId?: string,
 ): Promise<BlogPost | null> {
   const posts = await getBlogPosts(dataSourceId);
   const target = normalizeSlug(slug);
-  return (
-    posts.find((post) => normalizeSlug(post.slug) === target) || null
-  );
+  const post =
+    posts.find((post) => normalizeSlug(post.slug) === target) || null;
+
+  if (!post) return null;
+
+  // Fetch the full page body markdown (the actual content, not the DB property)
+  const markdown = await getBlogPostMarkdown(post.id);
+
+  // Strip the leading h1 title line so it doesn't duplicate the page title
+  const contentWithoutTitle = markdown.replace(/^#\s+.+\n?/, "").trimStart();
+
+  return {
+    ...post,
+    content: contentWithoutTitle,
+  };
 }

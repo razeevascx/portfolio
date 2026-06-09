@@ -246,6 +246,7 @@ export function Legend(baseUrl: string = DEFAULT_URL): string {
     `${$} ${baseUrl}            Full site summary (AI Optimized)`,
     `${$} ${baseUrl}/about      Get about information`,
     `${$} ${baseUrl}/projects   Get the list of projects`,
+    `${$} ${baseUrl}/blog       Get the latest articles`,
     `${$} ${baseUrl}/services   Get available services`,
     `${$} ${baseUrl}/contact    Get contact information`,
   ].join("\n");

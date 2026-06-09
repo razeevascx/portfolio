@@ -19,13 +19,14 @@ function Navbar() {
         <div className="flex justify-between items-center">
           <motion.div whileTap={{ scale: 1.05 }} className="cursor-pointer">
             <Link href="/" aria-label="Home">
+
               <Image
               src="/logo.svg"
                 width={50}
                 height={25}
                 alt="logo"
                 loading="eager"
-                className="hover:opacity-80 transition-opacity md:w-15 md:h-7.5"
+                className="hover:opacity-80 transition-opacity h-6 md:h-8 w-auto"
               />
             </Link>
           </motion.div>

@@ -73,6 +73,7 @@ ${Legend()}
     `- Home: \`curl -L ${baseUrl}/llms.txt\``,
     `- About: \`curl -L ${baseUrl}/about/llms.txt\``,
     `- Projects: \`curl -L ${baseUrl}/projects/llms.txt\``,
+    `- Blog: \`curl -L ${baseUrl}/blog/llms.txt\``,
     `- Services: \`curl -L ${baseUrl}/services/llms.txt\``,
     `- Contact: \`curl -L ${baseUrl}/contact/llms.txt\``,
   ];

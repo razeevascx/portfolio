@@ -42,6 +42,7 @@ I believe that great software isn't just written in code—it's fueled by curios
 - Home: curl rajeevpuri.com.np/llms.txt
 - About: curl rajeevpuri.com.np/about/llms.txt
 - Projects: curl rajeevpuri.com.np/projects/llms.txt
+- Blog: curl rajeevpuri.com.np/blog/llms.txt
 - Services: curl rajeevpuri.com.np/services/llms.txt
 - Contact: curl rajeevpuri.com.np/contact/llms.txt
 `;
