@@ -122,7 +122,7 @@ function ShipItCTA() {
         viewport={{ once: true }}
         className="relative z-10 px-6 text-5xl sm:text-6xl md:text-7xl lg:text-9xl"
       >
-        <h2 className="font-black tracking-wide leading-tight md:leading-none select-none transition-all duration-700 text-center md:text-left">
+        <h2 className="font-black tracking-wide leading-tight md:leading-none select-none transition-all duration-700 ">
           <span className="text-white block md:inline md:mx-2">SAY IT.</span>
 
           <span className="text-zinc-800 block md:inline md:mx-2">SHARE IT.</span>

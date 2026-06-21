@@ -106,18 +106,7 @@ export default function Hero() {
                 </motion.span>
               </motion.h1>
 
-              <motion.div
-                variants={itemVariants}
-                className="border-l-2 border-white/10 pl-4 md:pl-8 mb-8 md:mb-12"
-              >
-                <p className="text-sm md:text-lg lg:text-xl text-zinc-400 font-light max-w-3xl leading-relaxed hover:text-white transition-colors duration-300">
-                  Hey there. I&apos;m{" "}
-                  <span className="text-white font-bold">Rajeev Puri</span>. I help creatives
-                  and brands launch digital products that blend sound,
-                  reflection, and visual storytelling to make technology feel
-                  natural again.
-                </p>
-              </motion.div>
+
 
               <motion.p
                 variants={itemVariants}

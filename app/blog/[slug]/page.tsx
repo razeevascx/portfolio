@@ -18,6 +18,12 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  Calendar,
+  Clock,
+} from "lucide-react";
+import { BlogShare } from "@/components/sections/blog";
+
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -96,7 +102,7 @@ function normalizeRawTables(markdown: string): string {
   );
 }
 
-export default async function BlogPostPage(props: BlogPostPageProps) {
+export default async function BlogPostPage(props: Readonly<BlogPostPageProps>) {
   const params = await props.params;
   const post = await getBlogPostBySlug(params.slug);
 
@@ -121,66 +127,78 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
 
   return (
     <Container
-      className="pt-6 pb-20 px-8"
+      className="pt-6 pb-20 px-8 border-2 border-dashed border-t-0 border-border  mx-auto"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
-      <motion.div variants={itemVariants}>
-        <Breadcrumb className="text-lg mb-10">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{post.title}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </motion.div>
-
       <article>
-        <header className="mb-12">
-          {post.image && (
-            <motion.div
-              variants={itemVariants}
-              className="relative w-full h-96 mb-8 rounded-lg overflow-hidden"
-            >
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                sizes="(min-width: 1024px) 100vw, 100vw"
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-          )}
-          <motion.h1
-            variants={itemVariants}
-            className="font-semibold text-foreground text-4xl md:text-5xl lg:text-6xl leading-[0.95]"
-          >
-            {post.title}
-          </motion.h1>
-          <motion.div
-            variants={itemVariants}
-            className="meta-label text-foreground-muted flex items-center gap-4 mt-6"
-          >
-            {post.publishedDate && (
-              <time dateTime={post.publishedDate}>
-                {formatDate(post.publishedDate)}
-              </time>
-            )}
-            <span>•</span>
-            <span>{post.readingTime || 0} min read</span>
-          </motion.div>
-        </header>
-
         <motion.div
           variants={itemVariants}
-          className="blog-content mt-10 pt-10 border-t border-border text-foreground-secondary leading-relaxed font-light"
+          className="blog-content   border-border text-foreground-secondary leading-relaxed font-light max-w-5xl mx-auto prose prose-invert prose-a:text-blue-400 prose-a:no-underline prose-a:transition-colors prose-a:hover:text-blue-500"
         >
+          <motion.div variants={itemVariants}>
+            <Breadcrumb className="text-lg mb-10">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/blog">Blog</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{post.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </motion.div>
+          <header className="mb-12">
+            {post.image && (
+              <motion.div
+                variants={itemVariants}
+                className="relative w-full h-96 mb-8 rounded-lg overflow-hidden"
+              >
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  sizes="(min-width: 1024px) 100vw, 100vw"
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
+            )}
+            <motion.h1
+              variants={itemVariants}
+              className="font-semibold text-foreground text-4xl md:text-5xl lg:text-6xl leading-[0.95] border-b-2 border-border pb-4 mb-6 md:mb-8"
+            >
+              {post.title}
+            </motion.h1>
+            <motion.div
+              variants={itemVariants}
+              className=" flex flex-wrap  mt-8 pb-6 border-b-2 border-border mb-12 "
+            >
+              <div className="flex items-center gap-6">
+                {post.publishedDate && (
+                  <div className="flex items-center gap-2 group transition-colors hover:text-foreground">
+                    <Calendar className="size-3.5 text-primary/80" />
+                    <time dateTime={post.publishedDate}>
+                      {formatDate(post.publishedDate)}
+                    </time>
+                  </div>
+                )}
+                <div className="flex items-center gap-2 group transition-colors hover:text-foreground">
+                  <Clock className="size-3.5 text-primary/80" />
+                  <span>{post.readingTime || 0} min read</span>
+                </div>
+              </div>
+
+
+              <div className="flex flex-wrap items-center gap-4 ml-auto">
+
+                <BlogShare title={post.title} slug={post.slug} />
+
+              </div>
+            </motion.div>
+          </header>
           {markdown && <MDXRemote source={markdown} components={components} />}
         </motion.div>
         <script

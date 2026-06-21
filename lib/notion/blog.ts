@@ -47,12 +47,12 @@ function getPlainText(prop?: NotionProperty): string {
 }
 
 function getTags(prop?: NotionProperty): string[] {
-  if (!prop || prop.type !== "multi_select") return [];
+  if (prop?.type !== "multi_select") return [];
   return (prop.multi_select || []).map((tag) => tag.name || "").filter(Boolean);
 }
 
 function getImageUrl(prop?: NotionProperty): string | undefined {
-  if (!prop || prop.type !== "files") return undefined;
+  if (prop?.type !== "files") return undefined;
   const file = prop.files?.[0];
   return file?.file?.url || file?.external?.url;
 }
@@ -128,7 +128,7 @@ export async function getBlogPosts(dataSourceId?: string): Promise<BlogPost[]> {
           tags: getTags(props.Tags),
           image:
             getImageUrl(props["Files & media"]) || extractImageFromCover(row),
-        } as BlogPost;
+        };
       })
       .filter((post) => post.title && post.slug)
       .sort(
