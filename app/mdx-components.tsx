@@ -113,7 +113,7 @@ export const components = {
   // Tables
   table: ({ children }: any) => (
     <div className="my-8 overflow-x-auto rounded-none border border-zinc-800 bg-zinc-950/60 shadow-sm backdrop-blur-sm">
-      <table className="w-full min-w-[640px] border-collapse text-sm">
+      <table className="w-full min-w-160 border-collapse text-sm">
         {Children.toArray(children).some((child) => {
           if (!isValidElement(child)) {
             return false;

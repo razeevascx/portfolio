@@ -1,4 +1,4 @@
-import { Children } from 'react';
+import { Children, isValidElement } from 'react';
 
 interface BlogHeadingProps {
   level?: 'h1' | 'h2' | 'h3';
@@ -11,7 +11,7 @@ function getChildrenText(children: React.ReactNode): string {
   Children.forEach(children, (child) => {
     if (typeof child === 'string' || typeof child === 'number') {
       text += child;
-    } else if (child && typeof child === 'object' && 'props' in child) {
+    } else if (isValidElement<{ children?: React.ReactNode }>(child)) {
       text += getChildrenText(child.props.children);
     }
   });
