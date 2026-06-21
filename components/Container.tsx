@@ -24,7 +24,7 @@ export default function Container({
   return (
     <motion.section
       id={id}
-      className={cn(className, "max-w-7xl mx-auto overflow-x-hidden")}
+      className={cn(className, "max-w-6xl mx-auto overflow-x-hidden")}
       variants={variants}
       initial={initial}
       animate={animate}

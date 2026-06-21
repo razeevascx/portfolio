@@ -1,8 +1,6 @@
-'use cache';
+"use cache";
 import type { Project } from "@/lib/constants";
 import { getProjectRows } from "@/lib/notion/database";
-
-
 
 type NotionProperty = {
   type?: string;
@@ -12,6 +10,11 @@ type NotionProperty = {
   url?: string;
   checkbox?: boolean;
   number?: number;
+  files?: Array<{
+    name?: string;
+    file?: { url?: string };
+    external?: { url?: string };
+  }>;
 };
 
 function getPlainText(prop?: NotionProperty): string {
@@ -25,7 +28,9 @@ function getTechnologies(prop?: NotionProperty): string[] {
   if (!prop) return [];
 
   if (prop.type === "multi_select") {
-    return (prop.multi_select || []).map((item) => item.name || "").filter(Boolean);
+    return (prop.multi_select || [])
+      .map((item) => item.name || "")
+      .filter(Boolean);
   }
 
   const text = getPlainText(prop);
@@ -35,6 +40,21 @@ function getTechnologies(prop?: NotionProperty): string[] {
     .split(",")
     .map((t) => t.trim())
     .filter(Boolean);
+}
+
+function getImageUrl(prop?: NotionProperty): string | undefined {
+  if (!prop) return undefined;
+
+  // "files" type property (uploaded image or external image)
+  if (prop.type === "files") {
+    const first = prop.files?.[0];
+    return first?.file?.url || first?.external?.url || undefined;
+  }
+
+  // Fallback: plain url property used for an image link
+  if (prop.type === "url" && prop.url) return prop.url;
+
+  return undefined;
 }
 
 function toTechStack(technologies: string[]): Project["tech"] {
@@ -47,7 +67,6 @@ function toTechStack(technologies: string[]): Project["tech"] {
 }
 
 export async function getProjectData(): Promise<Project[]> {
-
   try {
     const rows = await getProjectRows();
 
@@ -62,10 +81,17 @@ export async function getProjectData(): Promise<Project[]> {
           description: getPlainText(props.Description),
           link: props["GitHub Link"]?.url || "",
           liveLink: props["Live Link"]?.url || undefined,
+          image: getImageUrl(props.Image),
           tech: toTechStack(technologies),
           featured: !!props.Featured?.checkbox,
-          stars: typeof props.Stars?.number === "number" ? props.Stars.number : undefined,
-          forks: typeof props.Forks?.number === "number" ? props.Forks.number : undefined,
+          stars:
+            typeof props.Stars?.number === "number"
+              ? props.Stars.number
+              : undefined,
+          forks:
+            typeof props.Forks?.number === "number"
+              ? props.Forks.number
+              : undefined,
         } as Project;
       })
       .filter((project) => project.title || project.link);

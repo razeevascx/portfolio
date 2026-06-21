@@ -113,15 +113,16 @@ const Project = ({
       transition={{ duration: 0.6 }}
       className="border group transition-colors duration-normal flex items-center hover:bg-white/2 p-6 border-border hover:border-primary/50"
     >
-      <div className="max-w-4xl space-y-8 p-4 md:12 flex-1">
-        <p className="font-mono inline-block bg-foreground text-background px-3 py-1 text-sm font-bold tracking-widest">
+      <div className="max-w-4xl space-y-8 p-2 ">
+        {/* <p className="font-mono inline-block bg-foreground text-background px-3 py-1 text-sm font-bold tracking-widest">
           {code}
-        </p>
+        </p> */}
 
         {image && (
           <div className="shadow-lg relative overflow-hidden rounded-base">
             <Image
-              src={`/pictures/${image}`}
+              src={image || "/pictures/default.png"}
+              loading='eager'
               alt={`Screenshot of ${title} project`}
               width={800}
               height={450}
@@ -136,7 +137,7 @@ const Project = ({
             rel="noopener noreferrer"
             className="flex items-center gap-2"
           >
-            <h3 className="text-3xl group-hover:text-primary font-bold text-foreground transition-colors duration-normal tracking-tight">
+            <h3 className="text-4xl group-hover:text-primary font-bold text-foreground transition-colors duration-normal tracking-tight">
               {title}
             </h3>
           </a>
@@ -155,7 +156,9 @@ const Project = ({
                 variant={"outline"}
                 className="px-4 py-2 transition-all duration-normal flex items-center gap-2 cursor-pointer border-border hover:border-primary/50"
               >
-                <span className="text-lg">{item.icon ?? renderTechIcon(item.id)}</span>
+                <span className="text-lg">
+                  {item.icon ?? renderTechIcon(item.id)}
+                </span>
                 <span
                   key={item.id}
                   className="text-[10px] text-foreground-secondary group-hover:text-foreground transition-all duration-normal font-bold tracking-widest"

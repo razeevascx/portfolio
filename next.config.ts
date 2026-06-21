@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
+      { protocol: "https", hostname: "assests.rajeevpuri.com.np" },
+      {
+        protocol: "https",
+        hostname: "**.amazonaws.com",
+      },
       {
         protocol: "https",
         hostname: "storage.efferd.com",
@@ -42,14 +47,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "brandfetch.com",
       },
-      {
-        protocol: "https",
-        hostname: "*.amazonaws.com",
-      },
-      {
-        protocol: "https",
-        hostname: "*.s3.*.amazonaws.com",
-      },
+
     ],
   },
   async headers() {

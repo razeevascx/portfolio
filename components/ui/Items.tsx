@@ -3,7 +3,7 @@ import * as motion from "motion/react-client";
 function Items({ Number = "", title, des = "" }: any) {
   return (
     <motion.div
-      className="space-y-4 mb-16"
+      className="space-y-4 mb-16 "
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -19,7 +19,7 @@ function Items({ Number = "", title, des = "" }: any) {
           {title}
         </h2>
       </motion.div>
-      <p className="text-gray-400 max-w-2xl text-lg">{des}</p>
+      <p className="text-gray-400 max-w-xl text-lg">{des}</p>
     </motion.div>
   );
 }
