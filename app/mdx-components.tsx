@@ -28,14 +28,21 @@ export const components = {
   // Paragraphs
   p: ({ children }: any) => <BlogBody>{children}</BlogBody>,
   ul: ({ children }: any) => (
-    <ul className="my-6 ml-6 list-disc [&>li]:mt-2">{children}</ul>
+    <ul className="my-6 ml-6 list-disc [&>li]:mt-2 font-mono font-medium text-foreground/90  text-md/loose tracking-tight text-justify ">
+      {children}
+    </ul>
+  ),
+  ol: ({ children }: any) => (
+    <ol className="my-6 ml-6 list-decimal [&>li]:mt-2 font-mono font-medium text-foreground/90  text-md/loose tracking-tight text-justify ">
+      {children}
+    </ol>
   ),
   blockquote: ({ children }: any) => (
     <blockquote className="mt-6 border-l-2 pl-6 italic">{children}</blockquote>
   ),
   code: ({ children }: any) => (
     <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-     {children}
+      {children}
     </code>
   ),
 
@@ -134,7 +141,6 @@ export const components = {
     <td className="border-b border-zinc-800 px-4 py-4 align-top text-zinc-400 font-light leading-6">
       {children}
     </td>
-
   ),
 } satisfies MDXComponents;
 

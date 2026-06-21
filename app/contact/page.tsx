@@ -10,13 +10,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rajeevpuri.com.np/contact",
   },
+  openGraph: {
+    title: "Contact | Rajeev Puri",
+    description: "Get in touch with Rajeev Puri for collaboration, project inquiries, or professional networking.",
+    url: "https://rajeevpuri.com.np/contact",
+    type: "website",
+  },
 };
 
 export default function page() {
   return (
     <main className="pb-20">
       {/* Original Contact Info Section */}
-      <Contact />
+      <Contact isPage={true} />
 
       {/* Booking Cards Section */}
       <Container className="p-5 ">

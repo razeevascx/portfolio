@@ -2,7 +2,7 @@ import Items from "@/components/ui/Items";
 import Container from "@/components/Container";
 import ProfileCard from "../ui/ProfileCard";
 
-const About = async () => {
+const About = async ({ isPage = false }: { isPage?: boolean }) => {
 
   return (
     <Container
@@ -15,6 +15,7 @@ const About = async () => {
       <Items
         Number="03"
         title="About Me"
+        headingTag={isPage ? "h1" : "h2"}
         des="Full-stack developer specializing in high-performance web applications built with clean, scalable code to drive user growth and digital transformation."
       />
 

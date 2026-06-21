@@ -1,6 +1,7 @@
 import * as motion from "motion/react-client";
 
-function Items({ Number = "", title, des = "" }: any) {
+function Items({ Number = "", title, des = "", headingTag = "h2" }: any) {
+  const Heading = headingTag;
   return (
     <motion.div
       className="space-y-4 mb-16 "
@@ -14,10 +15,10 @@ function Items({ Number = "", title, des = "" }: any) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-4xl md:text-5xl font-bold text-white">
+        <Heading className="text-4xl md:text-5xl font-bold text-white">
           <span className=" text-blue-500">{Number}. </span>
           {title}
-        </h2>
+        </Heading>
       </motion.div>
       <p className="text-gray-400 max-w-xl text-lg">{des}</p>
     </motion.div>

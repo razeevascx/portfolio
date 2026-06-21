@@ -7,7 +7,7 @@ export function BlogBody({ children, className = '' }: BlogBodyProps) {
   return (
     <p
       className={`
-        text-foreground-secondary text-base md:text-lgmb-6 font-light leading-7 not-first:mt-6
+         md:text-xl mb-6  leading-7 not-first:mt-6 font-mono font-medium text-foreground/90  text-sm/4 tracking-tight text-justify
         ${className}
       `}
     >

@@ -4,3 +4,4 @@ export { BlogPicture } from './BlogPicture';
 export { BlogCode } from './BlogCode';
 export { BlogPostCard } from './BlogPostCard';
 export { BlogShare } from './BlogShare';
+export { TableOfContents } from './TableOfContents';

@@ -4,7 +4,7 @@ import { socialLinks } from "@/lib/constants";
 import Container from "@/components/Container";
 import { Mail } from "lucide-react";
 
-function Contact() {
+function Contact({ isPage = false }: { isPage?: boolean }) {
   const email = "contact@rajeevpuri.com.np";
   const emailCode = `{
     name: "Rajeev Puri",
@@ -26,6 +26,7 @@ function Contact() {
         <Items
           Number="04"
           title="Contact Me"
+          headingTag={isPage ? "h1" : "h2"}
           des="Let’s bring your vision to life. Whether you're looking for UI/UX design or scalable web engineering, I’m here to help. Reach out through any of these channels to start our conversation."
         />
         <div className="relative">

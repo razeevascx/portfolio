@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rajeevpuri.com.np/blog",
   },
+  openGraph: {
+    title: "Blog | Rajeev Puri",
+    description:
+      "Technical insights and articles on Next.js, React, TypeScript, and software engineering. Sharing knowledge on building scalable web applications and modern digital experiences.",
+    url: "https://rajeevpuri.com.np/blog",
+    type: "website",
+  },
 };
 
 const containerVariants = {
@@ -54,6 +61,7 @@ export default async function BlogPage() {
         <Items
           Number="05"
           title="Blog"
+          headingTag="h1"
           des="Thoughts on web development, Next.js, React, and building great digital
           experiences."
         />

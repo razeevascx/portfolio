@@ -16,12 +16,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rajeevpuri.com.np/services",
   },
+  openGraph: {
+    title: "Services | Rajeev Puri",
+    description: "Explore the services offered by Rajeev Puri, including full-stack development, UI/UX design, and specialized web solutions.",
+    url: "https://rajeevpuri.com.np/services",
+    type: "website",
+  },
 };
 
 export default function page() {
   return (
     <>
-      <Service />
+      <Service isPage={true} />
 
       <Container className="px-5">
         <SectionHeading className="text-3xl font-bold text-white">

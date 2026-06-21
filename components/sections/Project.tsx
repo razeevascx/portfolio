@@ -7,9 +7,10 @@ import { getProjectData } from "@/lib/projectdata";
 
 interface ProjectsProps {
   list?: number;
+  isPage?: boolean;
 }
 
-const Projects = async ({ list = 3 }: ProjectsProps) => {
+const Projects = async ({ list = 4, isPage = false }: ProjectsProps) => {
   const projects = await getProjectData();
 
   return (
@@ -21,6 +22,7 @@ const Projects = async ({ list = 3 }: ProjectsProps) => {
       <Items
         Number="02"
         title="Projects"
+        headingTag={isPage ? "h1" : "h2"}
         des="Explore a curated gallery of  projects designed to solve complex business challenges. Each case study demonstrates my expertise in building scalable web applications, optimizing for Core Web Vitals, and delivering high-performance digital solutions that drive user engagement."
       />
       <Suspense
@@ -30,7 +32,7 @@ const Projects = async ({ list = 3 }: ProjectsProps) => {
           </div>
         }
       >
-        <div className="grid gap-4">
+        <div className="grid grid-cols-2 gap-4">
           {projects.slice(0, list).map((project, indx) => (
             <ProjectCard key={project.title} {...project} index={indx} />
           ))}

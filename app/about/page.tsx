@@ -25,6 +25,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rajeevpuri.com.np/about",
   },
+  openGraph: {
+    title: "About | Rajeev Puri",
+    description: "Learn more about Rajeev Puri, a software engineer with expertise in Next.js, React, and modern web technologies.",
+    url: "https://rajeevpuri.com.np/about",
+    type: "website",
+  },
 };
 
 export default async function Page() {
@@ -32,7 +38,7 @@ export default async function Page() {
 
   return (
     <main className="min-h-screen pb-20">
-      <About />
+      <About isPage={true} />
 
       <Container className="px-5 mt-16 space-y-32">
         {badges && badges.length > 0 && (

@@ -4,7 +4,7 @@ import ServiceCard from "@/components/cards/ServiceCard";
 import { services } from "@/lib/constants";
 import Container from "@/components/Container";
 
-const Service = () => {
+const Service = ({ isPage = false }: { isPage?: boolean }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -20,6 +20,7 @@ const Service = () => {
       <Items
         Number="01"
         title="Here's How I Can Help You"
+        headingTag={isPage ? "h1" : "h2"}
         des="Providing expert software engineering services focused on speed optimization, technical SEO, and secure backend infrastructure to drive measurable growth and seamless user experiences."
       />
       <motion.div

@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://rajeevpuri.com.np",
   },
+  openGraph: {
+    title: "Rajeev Puri | Software Engineer",
+    description: "Software Engineer based in London, UK, specializing in Next.js, React, and Full-Stack Development. Building high-performance web applications, scalable system architectures, and secure cloud infrastructure.",
+    url: "https://rajeevpuri.com.np",
+    type: "website",
+  },
 };
 
 export default function Home() {

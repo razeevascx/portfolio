@@ -27,7 +27,7 @@ function Footer() {
       <Container>
         <ShipItCTA />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-b border-zinc-900">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-b border-zinc-900">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,13 +46,22 @@ function Footer() {
               accessibility. Specializing in conversion-focused design and
               robust software engineering.
             </p>
+            <a
+              href="mailto:contact@rajeevpuri.com.np"
+              className="inline-flex items-center text-white hover:text-blue-400 transition-colors duration-300 group"
+            >
+              <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-medium">
+                contact@rajeevpuri.com.np
+              </span>
+            </a>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8  space-y-6 border-b md:border-b-0 md:border-r border-zinc-900"
+            className="p-8  space-y-6 border-b md:border-b-0 border-zinc-400 "
           >
             <h3 className="text-white text-xl font-semibold">Quick Links</h3>
             <nav className="grid grid-cols-2 gap-2">
@@ -69,46 +78,32 @@ function Footer() {
             </nav>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8  space-y-6"
-          >
-            <h3 className="text-white text-xl font-semibold">Get in Touch</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Have a project in mind? Let’s start the conversation. I’m ready to
-              help you create something remarkable.
-            </p>
-            <a
-              href="mailto:contact@rajeevpuri.com.np"
-              className="inline-flex items-center text-white hover:text-blue-400 transition-colors duration-300 group"
-            >
-              <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">contact@rajeevpuri.com.np</span>
-            </a>
-          </motion.div>
+
         </div>
 
         <div className="px-8  py-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <Socialicons />
             <Suspense>
               <p className="text-gray-400 text-xs md:text-sm">
                 &copy; {currentYear} Rajeev Puri. All rights reserved.
               </p>
             </Suspense>
-            <motion.a
-              href="#home"
-              className="text-gray-400 hover:text-white transition-colors duration-300 text-sm"
-              whileHover={{ y: -4 }}
-            >
-              Back to top ↑
-            </motion.a>
+
+            <nav className="flex gap-4 flex-wrap justify-center md:justify-end">
+              {[...quicklink, ...llms].map((link) => (
+                <motion.a
+                  key={link.id}
+                  href={link.url}
+                  className="flex items-center text-gray-400 hover:text-white transition-colors duration-300"
+                  whileHover={{ x: 4 }}
+                >
+                  <span>{link.title}</span>
+                </motion.a>
+              ))}
+            </nav>
           </div>
         </div>
       </Container>
-
     </footer>
   );
 }

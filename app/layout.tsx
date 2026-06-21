@@ -1,4 +1,4 @@
-import { IBM_Plex_Sans, Geist_Mono, Geist } from "next/font/google";
+import { Outfit, Geist_Mono, Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata, Viewport } from "next";
@@ -12,10 +12,9 @@ import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: "--font-plex-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -189,7 +188,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${ibmPlexSans.variable} ${geistMono.variable} antialiased font-sans dark selection:bg-primary/40 `}
+        className={`${outfit.variable} ${geistMono.variable} antialiased font-sans dark selection:bg-primary/40 `}
       >
         <Navbar />
         <NoiseOverlay />
