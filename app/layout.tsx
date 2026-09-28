@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Metadata, Viewport } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Databuddy } from "@databuddy/sdk/react";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { NoiseOverlay } from "@/components/background/Nebula";
@@ -166,6 +167,15 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
+      <Databuddy
+        clientId="cc8ae8ec-22cb-437d-a43b-24b73259417f"
+        trackHashChanges={true}
+        trackAttributes={true}
+        trackOutgoingLinks={true}
+        trackInteractions={true}
+        trackWebVitals={true}
+        trackErrors={true}
+      />
       <body className={`antialiased font-sans dark selection:bg-primary/40`}>
         <Navbar />
         <NoiseOverlay />
